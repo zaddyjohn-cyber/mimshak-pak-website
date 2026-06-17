@@ -520,6 +520,8 @@ p{margin:0 0 1rem}
 
 /* mobile call bar */
 .mobile-bar{display:none}
+/* mobile drawer + overlay are hidden until the mobile breakpoint */
+.mobile-nav,.nav-overlay{display:none}
 
 /* utilities */
 .divider{height:1px;background:var(--line);border:0;margin:0}
@@ -539,9 +541,9 @@ p{margin:0 0 1rem}
   .nav-links,.nav-cta .nav-tag{display:none}
   .hamburger{display:block}
   .nav-cta .btn{padding:.6rem 1.1rem;font-size:.82rem}
-  .mobile-nav{position:fixed;inset:0 0 0 auto;width:min(86vw,360px);background:#fff;z-index:140;
+  .mobile-nav{display:flex;position:fixed;inset:0 0 0 auto;width:min(86vw,360px);background:#fff;z-index:140;
     transform:translateX(100%);transition:.28s ease;box-shadow:var(--shadow-lg);padding:1.6rem 1.4rem;overflow-y:auto;
-    display:flex;flex-direction:column;gap:.1rem;border-left:1px solid var(--line)}
+    flex-direction:column;gap:.1rem;border-left:1px solid var(--line)}
   .mobile-nav.open{transform:translateX(0)}
   .mobile-nav a{padding:.9rem .5rem;color:var(--ink-dim);font-family:var(--head);font-weight:400;
     border-bottom:1px solid var(--line);font-size:.98rem}
@@ -549,7 +551,7 @@ p{margin:0 0 1rem}
   .mobile-nav .sub a{padding-left:1.3rem;font-size:.88rem;color:var(--muted)}
   .mobile-nav .mn-head{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent-2);
     margin-top:1.2rem;font-weight:600;font-family:var(--head)}
-  .nav-overlay{position:fixed;inset:0;background:rgba(43,26,14,.45);z-index:135;opacity:0;visibility:hidden;transition:.25s}
+  .nav-overlay{display:block;position:fixed;inset:0;background:rgba(43,26,14,.45);z-index:135;opacity:0;visibility:hidden;transition:.25s}
   .nav-overlay.open{opacity:1;visibility:visible}
   .split{grid-template-columns:1fr}
   .split--rev .split-media{order:0}

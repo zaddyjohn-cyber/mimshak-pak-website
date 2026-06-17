@@ -10,11 +10,13 @@
   // ---- Single source of truth for contact details (placeholders) ----
   var CONTACT = {
     name: "Mimshak Pak Investments Ltd.",
-    phoneDisplay: "+234 800 000 0000",
-    phoneTel: "+2348000000000",
-    whatsappNumber: "2348000000000", // international format, no +
+    phoneDisplay: "0803 707 9976",
+    phoneTel: "+2348037079976",
+    phone2Display: "0810 306 4976",
+    phone2Tel: "+2348103064976",
+    whatsappNumber: "2348037079976", // international format, no +
     email: "info@mimshakpak.com",
-    address: "Asaba, Delta State, Nigeria",
+    address: "No 3 Austin Ugbo Onyeje Avenue, Orjimiyana, Asaba, Delta State",
     hours: "Mon – Sat: 8:00am – 6:00pm",
     waMessage: "Hello Mimshak Pak, I would like to request a packaging quote."
   };
@@ -172,6 +174,7 @@
         '<div><h4>Contact</h4><ul class="foot-contact">' +
           '<li>📍 <span>' + CONTACT.address + '</span></li>' +
           '<li>📞 <a href="tel:' + CONTACT.phoneTel + '">' + CONTACT.phoneDisplay + '</a></li>' +
+          '<li>📞 <a href="tel:' + CONTACT.phone2Tel + '">' + CONTACT.phone2Display + '</a></li>' +
           '<li>💬 <a href="' + WA_LINK + '" target="_blank" rel="noopener">WhatsApp Chat</a></li>' +
           '<li>✉️ <a href="mailto:' + CONTACT.email + '">' + CONTACT.email + '</a></li>' +
           '<li>🕒 <span>' + CONTACT.hours + '</span></li>' +
