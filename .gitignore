@@ -1,0 +1,14 @@
+# Source media originals (kept locally, not needed by the built site).
+# The site uses optimized copies in assets/img and assets/video.
+/*.mp4
+/*.jpeg
+/*.jpg
+
+# Local tooling / preview config
+.claude/
+
+# Temp work folders & OS cruft
+_*/
+Thumbs.db
+.DS_Store
+desktop.ini
