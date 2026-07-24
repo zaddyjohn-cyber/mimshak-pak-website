@@ -48,41 +48,37 @@
 </head>
 <body data-page="home">
 
-<!-- ============ HERO (showcase: logo · name · 3D ring-globe) ============ -->
-<section class="showcase">
-  <div class="sc-orbit-glow" aria-hidden="true"></div>
-  <div class="container sc-grid">
-
-    <!-- LEFT: logo -->
-    <div class="sc-logo">
-      <img src="assets/img/logo.jpeg" alt="Mimshak Pak Investments Ltd. logo">
-      <span class="sc-l-cap">Asaba &bull; Delta State &bull; Nigeria</span>
-    </div>
-
-    <!-- CENTER: big company name -->
-    <div class="sc-name">
-      <h1 class="sc-title">Mimshak <em class="it">Pak</em><small>Investments Ltd.</small></h1>
-      <p class="sc-tag">Carton printing &amp; nylon print packaging manufacturer.</p>
-      <div class="btn-row">
-        <a class="btn btn--primary" href="request-a-quote.html">Request a Quote</a>
-        <a class="btn btn--ghost" href="https://wa.me/2348037079976" target="_blank" rel="noopener">Call / WhatsApp</a>
-      </div>
-    </div>
-
-    <!-- RIGHT: animated 3D ring-globe showing company pictures -->
-    <div class="sc-orb">
-      <div class="orb3d">
-        <div class="orb-core" data-orb></div>
-        <div class="orb-rings" aria-hidden="true">
-          <span class="ring r1"></span>
-          <span class="ring r2"></span>
-          <span class="ring r3"></span>
-        </div>
-        <div class="orb-shadow" aria-hidden="true"></div>
-      </div>
-    </div>
-
+<!-- ============ HERO (full-bleed image slider with overlaid copy) ============ -->
+<section class="hero-slider" id="heroSlider">
+  <div class="hs-slides">
+    <div class="hs-slide is-active"><img src="assets/img/press-line.jpeg" alt="Carton printing line in production at Mimshak Pak, Asaba" fetchpriority="high"></div>
+    <div class="hs-slide"><img src="assets/img/carton-de-bryans-soap.jpeg" alt="Printed carton packaging produced for a Nigerian brand" loading="lazy"></div>
+    <div class="hs-slide"><img src="assets/img/worker-bag-machine.jpeg" alt="Our team operating a packaging machine in Asaba" loading="lazy"></div>
+    <div class="hs-slide"><img src="assets/img/nylon-arise-bread.jpeg" alt="Branded nylon packaging by Mimshak Integrated Packages" loading="lazy"></div>
+    <div class="hs-slide"><img src="assets/img/printing-press-rotogravure.jpeg" alt="Rotogravure printing press producing packaging in Asaba" loading="lazy"></div>
+    <div class="hs-slide"><img src="assets/img/nylon-impact.jpeg" alt="Printed nylon food packaging made in Nigeria" loading="lazy"></div>
   </div>
+  <div class="hs-overlay" aria-hidden="true"></div>
+
+  <div class="container hs-content">
+    <span class="eyebrow">Asaba, Delta State &bull; Nigeria</span>
+    <h1>Reliable Carton Printing &amp; <em class="it">Nylon Packaging</em> Manufacturer in Asaba, Nigeria</h1>
+    <p class="lead">Mimshak Pak Investments Ltd. produces high-quality printed cartons and nylon packaging materials for consumer products, domestic use, and industrial packaging needs across Nigeria.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="request-a-quote.html">Request a Quote</a>
+      <a class="btn btn--ghost" href="https://wa.me/2348037079976" target="_blank" rel="noopener">Call / WhatsApp Us</a>
+    </div>
+    <div class="hero-badges">
+      <span>Fully Registered Nigerian Company</span>
+      <span>Carton &amp; Nylon Packaging</span>
+      <span>Domestic &amp; Industrial Use</span>
+      <span>Custom Printing Available</span>
+    </div>
+  </div>
+
+  <button class="hs-nav hs-prev" aria-label="Previous slide">&#8249;</button>
+  <button class="hs-nav hs-next" aria-label="Next slide">&#8250;</button>
+  <div class="hs-dots" role="tablist" aria-label="Hero slides"></div>
 </section>
 
 <!-- ============ TRUST STRIP ============ -->

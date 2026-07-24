@@ -266,6 +266,48 @@
     host.innerHTML = html;
   }
 
+  // ---- Hero image slider (auto-play, dots, arrows, pause on hover) ----
+  function initHeroSlider() {
+    var root = document.getElementById("heroSlider");
+    if (!root) return;
+    var slides = [].slice.call(root.querySelectorAll(".hs-slide"));
+    if (slides.length < 2) return;
+    var dotsWrap = root.querySelector(".hs-dots");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var i = 0, timer = null, DELAY = 6000;
+
+    var dots = slides.map(function (_, n) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "Go to slide " + (n + 1));
+      b.addEventListener("click", function () { go(n); restart(); });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle("is-active", k === i); });
+    }
+    function next() { go(i + 1); }
+    function prev() { go(i - 1); }
+    function start() { if (!reduce) timer = setInterval(next, DELAY); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    root.querySelector(".hs-next").addEventListener("click", function () { next(); restart(); });
+    root.querySelector(".hs-prev").addEventListener("click", function () { prev(); restart(); });
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+
+    go(0);
+    start();
+  }
+
   // ---- 3D ring-globe: roll through company pictures ----
   function buildOrb() {
     var core = document.querySelector(".orb-core[data-orb]");
@@ -368,6 +410,7 @@
     buildFooter();
     buildLightbox();
     buildRiseHero();
+    initHeroSlider();
     buildOrb();
     initCardVideos();
     initReveal();
