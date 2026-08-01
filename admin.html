@@ -20,6 +20,7 @@
   --ink-3:    #5a504a;
   --success:  #3d9e6e;
   --warn:     #d4a017;
+  --danger:   #e85c3a;
   --radius:   8px;
   --shadow:   0 2px 16px rgba(0,0,0,.45);
   --font: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
@@ -37,257 +38,121 @@
   }
 }
 :root[data-theme="light"] {
-  --bg:       #f2ede8;
-  --surface:  #ffffff;
-  --surface2: #f7f3ef;
-  --border:   #ddd6cf;
-  --ink:      #1c1815;
-  --ink-2:    #6b5f55;
-  --ink-3:    #a89e95;
-  --shadow:   0 2px 16px rgba(0,0,0,.10);
+  --bg:       #f2ede8; --surface: #ffffff; --surface2: #f7f3ef;
+  --border:   #ddd6cf; --ink: #1c1815; --ink-2: #6b5f55;
+  --ink-3:    #a89e95; --shadow: 0 2px 16px rgba(0,0,0,.10);
 }
 :root[data-theme="dark"] {
-  --bg:       #111110;
-  --surface:  #1c1815;
-  --surface2: #252220;
-  --border:   #2e2825;
-  --ink:      #f0ede8;
-  --ink-2:    #a89e95;
-  --ink-3:    #5a504a;
-  --shadow:   0 2px 16px rgba(0,0,0,.45);
+  --bg: #111110; --surface: #1c1815; --surface2: #252220;
+  --border: #2e2825; --ink: #f0ede8; --ink-2: #a89e95;
+  --ink-3: #5a504a; --shadow: 0 2px 16px rgba(0,0,0,.45);
 }
 
 html, body { height: 100%; }
-body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--ink);
-  min-height: 100%;
-  font-size: 14px;
-  line-height: 1.5;
-  transition: background .2s, color .2s;
-}
+body { font-family: var(--font); background: var(--bg); color: var(--ink); min-height: 100%; font-size: 14px; line-height: 1.5; transition: background .2s, color .2s; }
 
-/* ── Login Screen ── */
-#login-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background: var(--bg);
-}
-.login-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 40px 36px;
-  width: 100%;
-  max-width: 380px;
-  box-shadow: var(--shadow);
-}
-.login-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-.login-logo-mark {
-  width: 36px;
-  height: 36px;
-  background: var(--accent);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* ── Login ── */
+#login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.login-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px 36px; width: 100%; max-width: 380px; box-shadow: var(--shadow); }
+.login-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+.login-logo-mark { width: 36px; height: 36px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
 .login-logo-mark svg { width: 20px; height: 20px; fill: #fff; }
-.login-logo-text { font-weight: 600; font-size: 15px; color: var(--ink); letter-spacing: -.01em; }
+.login-logo-text { font-weight: 600; font-size: 15px; color: var(--ink); }
 .login-logo-sub { font-size: 11px; color: var(--ink-2); }
-.login-card h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
-.login-card p { color: var(--ink-2); font-size: 13px; margin-bottom: 24px; }
+.login-card h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+.login-card > p { color: var(--ink-2); font-size: 13px; margin-bottom: 24px; }
 .field { margin-bottom: 14px; }
 .field label { display: block; font-size: 12px; font-weight: 500; color: var(--ink-2); margin-bottom: 5px; letter-spacing: .04em; text-transform: uppercase; }
-.field input {
-  width: 100%;
-  padding: 10px 12px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--ink);
-  font-size: 14px;
-  font-family: var(--font);
-  outline: none;
-  transition: border-color .15s;
+.field input, .field select, .field textarea {
+  width: 100%; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius); color: var(--ink); font-size: 14px; font-family: var(--font);
+  outline: none; transition: border-color .15s;
 }
-.field input:focus { border-color: var(--accent); }
-.btn-login {
-  width: 100%;
-  padding: 11px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: background .15s;
-}
+.field input:focus, .field textarea:focus { border-color: var(--accent); }
+.field textarea { resize: vertical; min-height: 64px; }
+.field-hint { font-size: 11px; color: var(--ink-3); margin-top: 4px; }
+.btn-login { width: 100%; padding: 11px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background .15s; font-family: var(--font); }
 .btn-login:hover { background: var(--accent-d); }
-.login-error {
-  color: #e85c3a;
-  font-size: 12px;
-  margin-top: 8px;
-  min-height: 16px;
-}
+.login-error { color: var(--danger); font-size: 12px; margin-top: 8px; min-height: 16px; }
 
 /* ── App Shell ── */
 #app { display: none; min-height: 100vh; flex-direction: column; }
 #app.visible { display: flex; }
-
-.topbar {
-  height: 54px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  gap: 16px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+.topbar { height: 54px; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 20px; gap: 16px; position: sticky; top: 0; z-index: 100; }
 .topbar-logo { display: flex; align-items: center; gap: 8px; flex: 1; }
-.topbar-badge {
-  width: 28px; height: 28px;
-  background: var(--accent);
-  border-radius: 5px;
-  display: flex; align-items: center; justify-content: center;
-}
+.topbar-badge { width: 28px; height: 28px; background: var(--accent); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
 .topbar-badge svg { width: 15px; height: 15px; fill: #fff; }
 .topbar-title { font-weight: 600; font-size: 14px; color: var(--ink); }
 .topbar-sub { font-size: 11px; color: var(--ink-2); }
 .topbar-actions { display: flex; align-items: center; gap: 8px; }
-
-.btn-icon {
-  width: 32px; height: 32px;
-  border: 1px solid var(--border);
-  background: transparent;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--ink-2);
-  transition: border-color .15s, color .15s;
-}
+.btn-icon { width: 32px; height: 32px; border: 1px solid var(--border); background: transparent; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink-2); transition: border-color .15s, color .15s; }
 .btn-icon:hover { border-color: var(--accent); color: var(--accent); }
 .btn-icon svg { width: 15px; height: 15px; fill: currentColor; }
-
 .main-layout { display: flex; flex: 1; }
-
-.sidebar {
-  width: 200px;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  padding: 16px 0;
-  flex-shrink: 0;
-}
-.nav-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  padding: 10px 16px 4px;
-}
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 16px;
-  color: var(--ink-2);
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  border-left: 2px solid transparent;
-  transition: color .12s, border-color .12s, background .12s;
-  text-decoration: none;
-  background: transparent;
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  width: 100%;
-  text-align: left;
-  font-family: var(--font);
-}
+.sidebar { width: 200px; background: var(--surface); border-right: 1px solid var(--border); padding: 16px 0; flex-shrink: 0; }
+.nav-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); padding: 10px 16px 4px; }
+.nav-item { display: flex; align-items: center; gap: 9px; padding: 8px 16px; color: var(--ink-2); font-size: 13px; font-weight: 500; cursor: pointer; border-left: 2px solid transparent; transition: color .12s, border-color .12s, background .12s; text-decoration: none; background: transparent; border-top: none; border-right: none; border-bottom: none; width: 100%; text-align: left; font-family: var(--font); }
 .nav-item svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
 .nav-item:hover { color: var(--ink); background: var(--surface2); }
 .nav-item.active { color: var(--accent); border-left-color: var(--accent); background: var(--surface2); }
-
 .content { flex: 1; padding: 28px; overflow: auto; }
-
 .page-section { display: none; }
 .page-section.active { display: block; }
-
 .section-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
 .section-sub { font-size: 13px; color: var(--ink-2); margin-bottom: 24px; }
 
 /* Cards */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 28px; }
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px 16px;
-}
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 16px; }
 .card-label { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
 .card-value { font-size: 22px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
 .card-hint { font-size: 12px; color: var(--ink-2); margin-top: 3px; }
-
-/* Stat dot */
 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
 .dot.green { background: var(--success); }
 .dot.orange { background: var(--accent); }
 
 /* Quick links */
 .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
-.quick-link {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 14px;
-  text-decoration: none;
-  color: var(--ink);
-  transition: border-color .15s, box-shadow .15s;
-}
+.quick-link { display: flex; align-items: center; gap: 11px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; text-decoration: none; color: var(--ink); transition: border-color .15s, box-shadow .15s; }
 .quick-link:hover { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,115,26,.12); }
-.ql-icon {
-  width: 34px; height: 34px;
-  border-radius: 7px;
-  background: var(--surface2);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
+.ql-icon { width: 34px; height: 34px; border-radius: 7px; background: var(--surface2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .ql-icon svg { width: 17px; height: 17px; fill: var(--accent); }
 .ql-label { font-size: 12px; font-weight: 600; color: var(--ink); }
 .ql-hint { font-size: 11px; color: var(--ink-2); }
 
+/* Contact Editor */
+.editor-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.editor-status { font-size: 12px; color: var(--ink-2); flex: 1; min-width: 120px; }
+.editor-status.loading { color: var(--warn); }
+.editor-status.success { color: var(--success); }
+.editor-status.error { color: var(--danger); }
+.btn { padding: 8px 16px; border-radius: var(--radius); font-size: 13px; font-weight: 600; cursor: pointer; font-family: var(--font); border: none; transition: background .15s, opacity .15s; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--accent-d); }
+.btn-ghost { background: var(--surface2); color: var(--ink); border: 1px solid var(--border); }
+.btn-ghost:hover:not(:disabled) { border-color: var(--ink-2); }
+.btn-success { background: var(--success); color: #fff; }
+
+.editor-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.editor-form h3 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-row.single { grid-template-columns: 1fr; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+.no-token-notice { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--warn); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 20px; }
+.no-token-notice strong { color: var(--warn); font-size: 13px; }
+.no-token-notice p { font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+.no-token-notice button { margin-top: 10px; }
+
+/* Token status badge */
+.token-badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.token-badge.set { background: rgba(61,158,110,.15); color: var(--success); }
+.token-badge.unset { background: rgba(232,92,58,.12); color: var(--danger); }
+
 /* Pages list */
 .pages-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
-.pages-table th {
-  text-align: left;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface2);
-}
+.pages-table th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--surface2); }
 .pages-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--ink); vertical-align: middle; }
 .pages-table tr:last-child td { border-bottom: none; }
 .pages-table tr:hover td { background: var(--surface2); }
@@ -298,106 +163,42 @@ body {
 .tag.service { background: rgba(61,158,110,.12); color: var(--success); }
 .tag.blog { background: rgba(212,160,23,.12); color: var(--warn); }
 .tag.other { background: var(--surface2); color: var(--ink-2); }
-
 .edit-link { color: var(--accent); text-decoration: none; font-size: 12px; font-weight: 500; white-space: nowrap; }
 .edit-link:hover { text-decoration: underline; }
 
-/* Contact block */
+/* GBP checklist */
 .contact-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
 .contact-block h3 { font-size: 13px; font-weight: 600; margin-bottom: 14px; color: var(--ink); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-.info-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
-.info-row:last-child { border-bottom: none; }
-.info-key { font-size: 12px; color: var(--ink-2); font-weight: 500; min-width: 120px; }
-.info-val { font-size: 13px; color: var(--ink); font-weight: 500; flex: 1; }
-.copy-btn {
-  padding: 3px 9px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--ink-2);
-  font-size: 11px;
-  cursor: pointer;
-  font-family: var(--font);
-  transition: border-color .15s, color .15s;
-}
-.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
-.copy-btn.copied { border-color: var(--success); color: var(--success); }
-
-/* Guide steps */
-.guide-step { display: flex; gap: 14px; margin-bottom: 18px; }
-.step-num {
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.step-body h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
-.step-body p { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
-.step-body code {
-  font-family: 'Consolas', 'Courier New', monospace;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-size: 11px;
-  color: var(--accent);
-}
-.step-body a { color: var(--accent); }
-
-/* GBP checklist */
 .checklist { list-style: none; }
-.checklist li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-  color: var(--ink);
-}
+.checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--ink); }
 .checklist li:last-child { border-bottom: none; }
 .check-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
-.check-icon.done { color: var(--success); }
 .check-icon.todo { color: var(--ink-3); }
+.guide-step { display: flex; gap: 14px; margin-bottom: 18px; }
+.step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.step-body h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+.step-body p { font-size: 12px; color: var(--ink-2); line-height: 1.6; }
+.step-body code, code { font-family: 'Consolas','Courier New',monospace; background: var(--surface2); border: 1px solid var(--border); padding: 1px 5px; border-radius: 3px; font-size: 11px; color: var(--accent); }
+.step-body a, a.inline { color: var(--accent); }
 
-/* Logout */
-.btn-logout {
-  padding: 7px 14px;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--ink-2);
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  font-family: var(--font);
-  transition: border-color .15s, color .15s;
-}
-.btn-logout:hover { border-color: #e85c3a; color: #e85c3a; }
+/* Settings */
+.settings-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 16px; }
+.settings-block h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.settings-block p { font-size: 12px; color: var(--ink-2); margin-bottom: 16px; line-height: 1.6; }
+.settings-block ol { padding-left: 18px; font-size: 12px; color: var(--ink-2); line-height: 2; }
+.settings-block ol li b { color: var(--ink); }
+.token-row { display: flex; gap: 8px; align-items: flex-start; }
+.token-row input { flex: 1; }
 
-.view-site-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  background: var(--accent);
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: var(--font);
-  transition: background .15s;
-}
+/* Misc */
+.btn-logout { padding: 7px 14px; background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--ink-2); font-size: 12px; font-weight: 500; cursor: pointer; font-family: var(--font); transition: border-color .15s, color .15s; }
+.btn-logout:hover { border-color: var(--danger); color: var(--danger); }
+.view-site-link { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; background: var(--accent); border: none; border-radius: 6px; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; font-family: var(--font); transition: background .15s; }
 .view-site-link:hover { background: var(--accent-d); }
 .view-site-link svg { width: 12px; height: 12px; fill: currentColor; }
+.alert { padding: 10px 14px; border-radius: var(--radius); font-size: 12px; margin-bottom: 16px; }
+.alert.warn { background: rgba(212,160,23,.12); border: 1px solid rgba(212,160,23,.3); color: var(--warn); }
+.alert.success-alert { background: rgba(61,158,110,.12); border: 1px solid rgba(61,158,110,.3); color: var(--success); }
 
 @media (max-width: 640px) {
   .sidebar { display: none; }
@@ -439,7 +240,6 @@ body {
 
 <!-- ══ APP ══ -->
 <div id="app">
-  <!-- Topbar -->
   <div class="topbar">
     <div class="topbar-logo">
       <div class="topbar-badge">
@@ -464,39 +264,40 @@ body {
   </div>
 
   <div class="main-layout">
-    <!-- Sidebar -->
     <nav class="sidebar">
       <div class="nav-label">Menu</div>
       <button class="nav-item active" data-section="overview">
         <svg viewBox="0 0 20 20"><path d="M2 3h7v7H2zm9 0h7v4h-7zm0 6h7v7h-7zm-9 3h7v4H2z"/></svg>
         Overview
       </button>
+      <button class="nav-item" data-section="contact-editor">
+        <svg viewBox="0 0 20 20"><path d="M13 3H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7l-4-4zm-1 5V4.5L16.5 9H12zM7 9h2v2H7zm4 0h2v2h-2zm-4 4h6v1.5H7z"/></svg>
+        Edit Contact
+      </button>
       <button class="nav-item" data-section="pages">
         <svg viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v12l5-2 4 2 5-2V5a2 2 0 00-2-2H5zm1 4h8v1.5H6V7zm0 3h8v1.5H6V10zm0 3h5v1.5H6V13z"/></svg>
         Pages
       </button>
-      <button class="nav-item" data-section="contact">
-        <svg viewBox="0 0 20 20"><path d="M14 2H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2zM9 13H7v-2h2v2zm0-4H7V7h2v2zm4 4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>
-        Contact Info
-      </button>
       <button class="nav-item" data-section="gbp">
-        <svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 3a5 5 0 012 9.58V13h-1.5v-1H10v-1.5h1.5V9H10V7.5h1.5V6A5 5 0 0110 5z"/></svg>
+        <svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 11H9V9h2v4zm0-6H9V5h2v2z"/></svg>
         Google Profile
       </button>
       <button class="nav-item" data-section="guide">
         <svg viewBox="0 0 20 20"><path d="M9 3H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M13 3l4 4-7 7H6v-4l7-7z"/></svg>
         How to Update
       </button>
+      <button class="nav-item" data-section="settings">
+        <svg viewBox="0 0 20 20"><path d="M10.325 3.012A8 8 0 0118 10a8 8 0 01-7.675 6.988l-.9-1.8A6 6 0 1010 4V2l-3 3 3 3V6a6 6 0 01.325.012zM8 9h4v2H8z"/></svg>
+        Settings
+      </button>
     </nav>
 
-    <!-- Content -->
     <main class="content">
 
       <!-- Overview -->
       <section class="page-section active" id="sec-overview">
         <div class="section-title">Overview</div>
         <div class="section-sub">Website status and quick actions</div>
-
         <div class="card-grid">
           <div class="card">
             <div class="card-label">Live Domain</div>
@@ -514,152 +315,132 @@ body {
             <div class="card-hint">Free — no monthly fee</div>
           </div>
           <div class="card">
-            <div class="card-label">Google Profile</div>
-            <div class="card-value" style="font-size:14px;margin-top:4px;color:var(--warn)">Not set up</div>
-            <div class="card-hint"><span class="dot orange"></span>Action needed</div>
+            <div class="card-label">GitHub Access</div>
+            <div class="card-value" style="font-size:14px;margin-top:4px" id="ov-token-status">—</div>
+            <div class="card-hint" id="ov-token-hint">Check Settings tab</div>
           </div>
         </div>
-
         <div class="section-title" style="font-size:14px;margin-bottom:12px">Quick Actions</div>
         <div class="link-grid">
           <a class="quick-link" href="https://github.com/zaddyjohn-cyber/mimshak-pak-website" target="_blank" rel="noopener">
-            <div class="ql-icon">
-              <svg viewBox="0 0 20 20"><path d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.34c-2.23.48-2.69-1.07-2.69-1.07-.36-.92-.88-1.17-.88-1.17-.72-.49.06-.48.06-.48.8.06 1.22.82 1.22.82.71 1.21 1.86.86 2.32.66.07-.51.28-.86.5-1.06-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0110 6.84c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8.01 8.01 0 0018 10c0-4.42-3.58-8-8-8z"/></svg>
-            </div>
-            <div>
-              <div class="ql-label">GitHub Repo</div>
-              <div class="ql-hint">Edit website files</div>
-            </div>
+            <div class="ql-icon"><svg viewBox="0 0 20 20"><path d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.34c-2.23.48-2.69-1.07-2.69-1.07-.36-.92-.88-1.17-.88-1.17-.72-.49.06-.48.06-.48.8.06 1.22.82 1.22.82.71 1.21 1.86.86 2.32.66.07-.51.28-.86.5-1.06-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0110 6.84c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8.01 8.01 0 0018 10c0-4.42-3.58-8-8-8z"/></svg></div>
+            <div><div class="ql-label">GitHub Repo</div><div class="ql-hint">View all files</div></div>
           </a>
           <a class="quick-link" href="https://business.google.com" target="_blank" rel="noopener">
-            <div class="ql-icon">
-              <svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 11H9V9h2v4zm0-6H9V5h2v2z"/></svg>
-            </div>
-            <div>
-              <div class="ql-label">Google Business</div>
-              <div class="ql-hint">Manage GBP listing</div>
-            </div>
+            <div class="ql-icon"><svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 11H9V9h2v4zm0-6H9V5h2v2z"/></svg></div>
+            <div><div class="ql-label">Google Business</div><div class="ql-hint">Manage GBP listing</div></div>
           </a>
           <a class="quick-link" href="https://search.google.com/search-console" target="_blank" rel="noopener">
-            <div class="ql-icon">
-              <svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 5v5l3 2-1 1.7-4-2.4V7h2z"/></svg>
-            </div>
-            <div>
-              <div class="ql-label">Search Console</div>
-              <div class="ql-hint">Google traffic data</div>
-            </div>
+            <div class="ql-icon"><svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 5v5l3 2-1 1.7-4-2.4V7h2z"/></svg></div>
+            <div><div class="ql-label">Search Console</div><div class="ql-hint">Google traffic data</div></div>
           </a>
           <a class="quick-link" href="https://wa.me/2348037079976" target="_blank" rel="noopener">
-            <div class="ql-icon">
-              <svg viewBox="0 0 20 20"><path d="M10 2C5.58 2 2 5.6 2 10.12c0 1.42.37 2.76 1.02 3.93L2 18l4.08-1.07A7.93 7.93 0 0010 18.25c4.42 0 8-3.62 8-8.13C18 5.6 14.42 2 10 2zm4.12 11.28c-.17.48-1 .92-1.38.97-.37.05-.72.22-2.44-.5-2.06-.85-3.38-2.96-3.48-3.1-.1-.13-.82-1.1-.82-2.1 0-1 .52-1.49.71-1.7.19-.2.41-.25.54-.25h.39c.12 0 .29-.05.45.34.17.4.56 1.38.61 1.48.05.1.08.22.02.35-.07.13-.1.22-.2.34-.1.12-.2.26-.3.36-.1.1-.2.21-.09.41.12.2.52.85 1.12 1.38.77.68 1.42.89 1.62.99.2.1.32.08.44-.05.12-.12.5-.57.63-.77.13-.2.27-.16.45-.1.18.07 1.14.54 1.34.64.2.1.33.15.38.23.05.09.05.51-.12.99z"/></svg>
-            </div>
-            <div>
-              <div class="ql-label">WhatsApp</div>
-              <div class="ql-hint">Open business chat</div>
-            </div>
+            <div class="ql-icon"><svg viewBox="0 0 20 20"><path d="M10 2C5.58 2 2 5.6 2 10.12c0 1.42.37 2.76 1.02 3.93L2 18l4.08-1.07A7.93 7.93 0 0010 18.25c4.42 0 8-3.62 8-8.13C18 5.6 14.42 2 10 2z"/></svg></div>
+            <div><div class="ql-label">WhatsApp</div><div class="ql-hint">Open business chat</div></div>
           </a>
-          <a class="quick-link" href="https://github.com/zaddyjohn-cyber/mimshak-pak-website/edit/main/assets/js/main.js" target="_blank" rel="noopener">
-            <div class="ql-icon">
-              <svg viewBox="0 0 20 20"><path d="M13 3H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7l-4-4zm-1 5V4.5L16.5 9H12z"/></svg>
+        </div>
+      </section>
+
+      <!-- Contact Editor -->
+      <section class="page-section" id="sec-contact-editor">
+        <div class="section-title">Edit Contact Information</div>
+        <div class="section-sub">Update the phone numbers, email, address and hours shown across the entire website. Changes go live in about 60 seconds.</div>
+
+        <div id="no-token-notice" class="no-token-notice" style="display:none">
+          <strong>GitHub access not set up yet</strong>
+          <p>To edit and save contact details directly here, you need to add a GitHub access token once. Go to the <strong>Settings</strong> tab and follow the 5-step guide — it takes about 3 minutes.</p>
+          <button class="btn btn-ghost" onclick="switchSection('settings')">Go to Settings →</button>
+        </div>
+
+        <div class="editor-toolbar">
+          <button class="btn btn-ghost" id="btn-load">
+            <svg style="width:13px;height:13px;fill:currentColor;vertical-align:-2px;margin-right:5px" viewBox="0 0 20 20"><path d="M10 3a7 7 0 100 14A7 7 0 0010 3zm1 10H9V9h2v4zm0-6H9V5h2v2z"/></svg>
+            Load current values
+          </button>
+          <button class="btn btn-primary" id="btn-save" disabled>Save to website</button>
+          <span class="editor-status" id="editor-status"></span>
+        </div>
+
+        <div class="editor-form">
+          <h3>Phone Numbers</h3>
+          <div class="form-row">
+            <div class="field">
+              <label>Phone 1 — displayed on site</label>
+              <input type="text" id="f-phoneDisplay" placeholder="e.g. 0803 707 9976">
+              <div class="field-hint">How it appears on the page</div>
             </div>
-            <div>
-              <div class="ql-label">Edit Contact Info</div>
-              <div class="ql-hint">Update phone, email…</div>
+            <div class="field">
+              <label>Phone 1 — dial format</label>
+              <input type="text" id="f-phoneTel" placeholder="e.g. +2348037079976">
+              <div class="field-hint">Must start with +234, no spaces</div>
             </div>
-          </a>
-          <a class="quick-link" href="https://github.com/zaddyjohn-cyber/mimshak-pak-website/deployments" target="_blank" rel="noopener">
-            <div class="ql-icon">
-              <svg viewBox="0 0 20 20"><path d="M10 2l1.5 4.5H16l-3.7 2.7 1.4 4.3L10 11 6.3 13.5l1.4-4.3L4 6.5h4.5z"/></svg>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label>Phone 2 — displayed on site</label>
+              <input type="text" id="f-phone2Display" placeholder="e.g. 0810 306 4976">
             </div>
-            <div>
-              <div class="ql-label">Deployments</div>
-              <div class="ql-hint">View publish history</div>
+            <div class="field">
+              <label>Phone 2 — dial format</label>
+              <input type="text" id="f-phone2Tel" placeholder="e.g. +2348103064976">
+              <div class="field-hint">Must start with +234, no spaces</div>
             </div>
-          </a>
+          </div>
+        </div>
+
+        <div class="editor-form" style="margin-top:14px">
+          <h3>WhatsApp</h3>
+          <div class="form-row">
+            <div class="field">
+              <label>WhatsApp number</label>
+              <input type="text" id="f-whatsappNumber" placeholder="e.g. 2348037079976">
+              <div class="field-hint">Numbers only — no +, no spaces. Starts with 234.</div>
+            </div>
+            <div class="field">
+              <label>WhatsApp greeting message</label>
+              <input type="text" id="f-waMessage" placeholder="Hello Mimshak Pak...">
+              <div class="field-hint">First message sent when customer taps WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-form" style="margin-top:14px">
+          <h3>Business Details</h3>
+          <div class="form-row single">
+            <div class="field">
+              <label>Email address</label>
+              <input type="email" id="f-email" placeholder="e.g. info@mimshakpak.com">
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="field">
+              <label>Business address</label>
+              <textarea id="f-address" rows="2" placeholder="Full address"></textarea>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="field">
+              <label>Business hours</label>
+              <input type="text" id="f-hours" placeholder="e.g. Mon – Sat: 8:00am – 6:00pm">
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:10px;align-items:center">
+          <button class="btn btn-primary" id="btn-save-2" disabled>Save to website</button>
+          <span class="editor-status" id="editor-status-2"></span>
         </div>
       </section>
 
       <!-- Pages -->
       <section class="page-section" id="sec-pages">
         <div class="section-title">Website Pages</div>
-        <div class="section-sub">All 24 published pages — click Edit to open the file in GitHub</div>
+        <div class="section-sub">All 24 published pages — click Edit to open the file in GitHub's editor</div>
         <div style="overflow-x:auto">
-        <table class="pages-table">
-          <thead>
-            <tr>
-              <th>Page</th>
-              <th>File</th>
-              <th>Type</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody id="pages-tbody"></tbody>
-        </table>
-        </div>
-      </section>
-
-      <!-- Contact Info -->
-      <section class="page-section" id="sec-contact">
-        <div class="section-title">Contact Information</div>
-        <div class="section-sub">Current details stored in the website. To change any of these, edit <code style="font-family:monospace;font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;border:1px solid var(--border);color:var(--accent)">assets/js/main.js</code> and look for the <code style="font-family:monospace;font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;border:1px solid var(--border);color:var(--accent)">CONTACT</code> object at the top.</div>
-
-        <div class="contact-block">
-          <h3>Business Contact Details</h3>
-          <div class="info-row">
-            <span class="info-key">Phone 1</span>
-            <span class="info-val">0803 707 9976</span>
-            <button class="copy-btn" data-copy="0803 707 9976">Copy</button>
-          </div>
-          <div class="info-row">
-            <span class="info-key">Phone 2</span>
-            <span class="info-val">0810 306 4976</span>
-            <button class="copy-btn" data-copy="0810 306 4976">Copy</button>
-          </div>
-          <div class="info-row">
-            <span class="info-key">WhatsApp</span>
-            <span class="info-val">+234 803 707 9976</span>
-            <button class="copy-btn" data-copy="+2348037079976">Copy</button>
-          </div>
-          <div class="info-row">
-            <span class="info-key">Email</span>
-            <span class="info-val">info@mimshakpak.com</span>
-            <button class="copy-btn" data-copy="info@mimshakpak.com">Copy</button>
-          </div>
-          <div class="info-row">
-            <span class="info-key">Address</span>
-            <span class="info-val">No 3 Austin Ugbo Onyeje Ave, Orjimiyana, Asaba, Delta State</span>
-            <button class="copy-btn" data-copy="No 3 Austin Ugbo Onyeje Avenue, Orjimiyana, Asaba, Delta State">Copy</button>
-          </div>
-          <div class="info-row">
-            <span class="info-key">Hours</span>
-            <span class="info-val">Mon – Sat: 8:00am – 6:00pm</span>
-            <button class="copy-btn" data-copy="Mon – Sat: 8:00am – 6:00pm">Copy</button>
-          </div>
-        </div>
-
-        <div class="contact-block">
-          <h3>To update contact details</h3>
-          <div class="guide-step">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <h4>Open the file on GitHub</h4>
-              <p>Go to <a href="https://github.com/zaddyjohn-cyber/mimshak-pak-website/edit/main/assets/js/main.js" target="_blank" rel="noopener">Edit main.js on GitHub</a> — you'll need to be logged in as <code>zaddyjohn-cyber</code>.</p>
-            </div>
-          </div>
-          <div class="guide-step">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <h4>Find the CONTACT object</h4>
-              <p>At the very top of the file, look for <code>var CONTACT = {</code> — that's where all the phone numbers, email and address live.</p>
-            </div>
-          </div>
-          <div class="guide-step">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <h4>Change the value and save</h4>
-              <p>Edit the relevant line (e.g. <code>phoneDisplay</code>), scroll down and click <strong>Commit changes</strong>. The site updates automatically within a minute.</p>
-            </div>
-          </div>
+          <table class="pages-table">
+            <thead><tr><th>Page</th><th>File</th><th>Type</th><th>Edit on GitHub</th></tr></thead>
+            <tbody id="pages-tbody"></tbody>
+          </table>
         </div>
       </section>
 
@@ -667,80 +448,19 @@ body {
       <section class="page-section" id="sec-gbp">
         <div class="section-title">Google Business Profile</div>
         <div class="section-sub">Set up the free listing so customers find Mimshak Pak on Google Maps and Search</div>
-
         <div class="contact-block">
           <h3>Setup checklist</h3>
           <ul class="checklist">
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Create the listing</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">Go to <a href="https://business.google.com" target="_blank" rel="noopener" style="color:var(--accent)">business.google.com</a> → Add your business → Search "Mimshak Pak Investments"</span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Choose the right category</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">Primary: <strong>Packaging Company</strong> — add secondary: <em>Printing Company</em> and <em>Manufacturer</em></span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Add the address</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">No 3 Austin Ugbo Onyeje Avenue, Orjimiyana, Asaba, Delta State</span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Add phone numbers</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">Primary: 0803 707 9976 — Secondary: 0810 306 4976</span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Add website URL</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">https://www.mimshakpak.com</span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Set business hours</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">Monday – Saturday: 8:00 AM – 6:00 PM, Sunday: Closed</span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Upload facility photos</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">Add 8–12 photos: factory floor, machines, finished products, team. Real photos rank higher.</span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Verify the listing</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">Google sends a postcard with a verification code to the business address. Enter it when it arrives (usually 5–14 days).</span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Add services</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">List: Carton Printing, Custom Carton Packaging, Nylon Print Packaging, Industrial Packaging, Branded Packaging</span>
-              </div>
-            </li>
-            <li>
-              <svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-              <div>
-                <strong>Ask first customers for reviews</strong><br>
-                <span style="font-size:12px;color:var(--ink-2)">After verification, request Google reviews from existing clients — even 3–5 reviews significantly boosts local search ranking.</span>
-              </div>
-            </li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Create the listing</strong><br><span style="font-size:12px;color:var(--ink-2)">Go to <a href="https://business.google.com" target="_blank" rel="noopener" style="color:var(--accent)">business.google.com</a> → Add your business → Search "Mimshak Pak Investments"</span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Choose the right category</strong><br><span style="font-size:12px;color:var(--ink-2)">Primary: <strong>Packaging Company</strong> — add secondary: <em>Printing Company</em> and <em>Manufacturer</em></span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Add the address</strong><br><span style="font-size:12px;color:var(--ink-2)">No 3 Austin Ugbo Onyeje Avenue, Orjimiyana, Asaba, Delta State</span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Add phone numbers</strong><br><span style="font-size:12px;color:var(--ink-2)">Primary: 0803 707 9976 — Secondary: 0810 306 4976</span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Add website URL</strong><br><span style="font-size:12px;color:var(--ink-2)">https://www.mimshakpak.com</span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Set business hours</strong><br><span style="font-size:12px;color:var(--ink-2)">Monday – Saturday: 8:00 AM – 6:00 PM, Sunday: Closed</span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Upload facility photos</strong><br><span style="font-size:12px;color:var(--ink-2)">Add 8–12 photos: factory floor, machines, finished products, team.</span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Verify the listing</strong><br><span style="font-size:12px;color:var(--ink-2)">Google sends a postcard with a verification code to the business address (5–14 days).</span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Add services</strong><br><span style="font-size:12px;color:var(--ink-2)">List: Carton Printing, Custom Carton Packaging, Nylon Print Packaging, Industrial Packaging, Branded Packaging</span></div></li>
+            <li><svg class="check-icon todo" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><div><strong>Ask first customers for reviews</strong><br><span style="font-size:12px;color:var(--ink-2)">Even 3–5 reviews significantly boost local search ranking.</span></div></li>
           </ul>
         </div>
       </section>
@@ -748,86 +468,73 @@ body {
       <!-- Guide -->
       <section class="page-section" id="sec-guide">
         <div class="section-title">How to Update the Website</div>
-        <div class="section-sub">Step-by-step guide for making common changes — no coding required for most tasks</div>
-
+        <div class="section-sub">Common tasks and how to do them</div>
+        <div class="contact-block">
+          <h3>Update contact details</h3>
+          <p style="font-size:13px;color:var(--ink-2);margin-bottom:0">Use the <strong>Edit Contact</strong> tab — load the current values, make your changes, and click <strong>Save to website</strong>. The site updates automatically in about 60 seconds. No GitHub account needed.</p>
+        </div>
         <div class="contact-block">
           <h3>Add or edit a blog post</h3>
           <div class="guide-step">
             <div class="step-num">1</div>
-            <div class="step-body">
-              <h4>Go to the GitHub repository</h4>
-              <p>Open <a href="https://github.com/zaddyjohn-cyber/mimshak-pak-website" target="_blank" rel="noopener" style="color:var(--accent)">github.com/zaddyjohn-cyber/mimshak-pak-website</a> and sign in as <code>zaddyjohn-cyber</code>.</p>
-            </div>
+            <div class="step-body"><h4>Open the file on GitHub</h4><p>Go to the <strong>Pages</strong> tab and click <strong>Edit ↗</strong> next to the blog post you want to change. You'll need to sign in to GitHub.</p></div>
           </div>
           <div class="guide-step">
             <div class="step-num">2</div>
-            <div class="step-body">
-              <h4>Find the blog post file</h4>
-              <p>Blog posts are files like <code>blog-carton-packaging-asaba.html</code> in the root folder. Click the file name to open it, then click the pencil ✏️ icon to edit.</p>
-            </div>
+            <div class="step-body"><h4>Edit the text</h4><p>Change the text between the HTML tags. Don't touch anything that starts with <code>&lt;</code> unless you know what it is.</p></div>
           </div>
           <div class="guide-step">
             <div class="step-num">3</div>
-            <div class="step-body">
-              <h4>Edit the text and save</h4>
-              <p>Change the text between the HTML tags. When done, scroll down, write a short commit message (e.g. <em>"Update blog post"</em>), and click <strong>Commit changes</strong>.</p>
-            </div>
-          </div>
-          <div class="guide-step">
-            <div class="step-num">4</div>
-            <div class="step-body">
-              <h4>Site updates in ~60 seconds</h4>
-              <p>GitHub Pages rebuilds automatically. Refresh the live site after about a minute to see the changes.</p>
-            </div>
+            <div class="step-body"><h4>Commit and it's live</h4><p>Scroll down → write a short note (e.g. <em>"Update blog post"</em>) → click <strong>Commit changes</strong>. Site refreshes in ~60 seconds.</p></div>
           </div>
         </div>
-
-        <div class="contact-block">
-          <h3>Change a phone number or email</h3>
-          <div class="guide-step">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <h4>Open main.js</h4>
-              <p>Go to <a href="https://github.com/zaddyjohn-cyber/mimshak-pak-website/edit/main/assets/js/main.js" target="_blank" rel="noopener" style="color:var(--accent)">Edit main.js on GitHub</a> — all contact details are at the top in the <code>CONTACT</code> block.</p>
-            </div>
-          </div>
-          <div class="guide-step">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <h4>Find the right field</h4>
-              <p><code>phoneDisplay</code> is the number shown on the page. <code>phoneTel</code> is what the phone dials — it must start with <code>+234</code> and have no spaces. Update both together.</p>
-            </div>
-          </div>
-          <div class="guide-step">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <h4>Commit and it's live</h4>
-              <p>Scroll down → Commit changes → done. The new contact info will appear on every page of the site.</p>
-            </div>
-          </div>
-        </div>
-
         <div class="contact-block">
           <h3>Add a new photo</h3>
           <div class="guide-step">
             <div class="step-num">1</div>
-            <div class="step-body">
-              <h4>Upload to the images folder</h4>
-              <p>In the GitHub repo, open the <code>assets/img/</code> folder → click <strong>Add file → Upload files</strong> → drag in the new JPEG photo.</p>
-            </div>
+            <div class="step-body"><h4>Upload to the images folder</h4><p>In the GitHub repo, open <code>assets/img/</code> → click <strong>Add file → Upload files</strong> → drag in the JPEG photo → commit.</p></div>
           </div>
           <div class="guide-step">
             <div class="step-num">2</div>
-            <div class="step-body">
-              <h4>Reference it in a page</h4>
-              <p>Open the HTML page you want to update. Find the <code>&lt;img src="assets/img/…"&gt;</code> tag and change the filename to your new photo's filename.</p>
-            </div>
+            <div class="step-body"><h4>Reference it in a page</h4><p>Open the page you want to update via the <strong>Pages</strong> tab. Find <code>&lt;img src="assets/img/…"&gt;</code> and change the filename to your new photo's name.</p></div>
           </div>
         </div>
+      </section>
 
-        <div class="contact-block" style="border-color:var(--accent);border-left:3px solid var(--accent)">
-          <h3 style="color:var(--accent)">Need help?</h3>
-          <p style="font-size:13px;color:var(--ink-2);line-height:1.6">For anything beyond these tasks — new pages, layout changes, SEO updates — contact the developer. Keep a note of what you want changed and they can implement it quickly.</p>
+      <!-- Settings -->
+      <section class="page-section" id="sec-settings">
+        <div class="section-title">Settings</div>
+        <div class="section-sub">One-time setup to allow direct editing from this admin panel</div>
+
+        <div class="settings-block">
+          <h3>GitHub Access Token <span id="settings-token-badge" style="margin-left:8px"></span></h3>
+          <p>This token lets the admin panel save changes directly to the website without needing a GitHub account. It only takes 3 minutes to set up and you only do it once on each device.</p>
+
+          <p><strong style="color:var(--ink)">How to get your token (do this as the website owner):</strong></p>
+          <ol>
+            <li>Go to <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener" style="color:var(--accent)">github.com → Settings → Developer settings → Fine-grained tokens</a></li>
+            <li>Click <b>Generate new token</b></li>
+            <li>Name it <b>Mimshak Pak Admin</b> — set expiration to <b>1 year</b></li>
+            <li>Under <b>Repository access</b>, choose <b>Only select repositories</b> → pick <b>mimshak-pak-website</b></li>
+            <li>Under <b>Permissions → Repository permissions</b>, find <b>Contents</b> → set to <b>Read and Write</b></li>
+            <li>Click <b>Generate token</b> — copy the token (starts with <code>github_pat_</code>)</li>
+            <li>Paste it below and click <b>Save token</b></li>
+          </ol>
+
+          <div style="margin-top:18px">
+            <div class="token-row">
+              <div class="field" style="margin:0;flex:1">
+                <label>GitHub Personal Access Token</label>
+                <input type="password" id="token-input" placeholder="github_pat_…" autocomplete="off">
+              </div>
+              <div style="padding-top:22px;display:flex;gap:8px">
+                <button class="btn btn-primary" id="btn-save-token">Save token</button>
+                <button class="btn btn-ghost" id="btn-clear-token">Clear</button>
+              </div>
+            </div>
+            <div id="token-save-msg" style="font-size:12px;margin-top:8px;min-height:16px"></div>
+            <p class="field-hint" style="margin-top:6px">The token is saved only on this device (browser storage). It is never sent anywhere except directly to GitHub's secure API.</p>
+          </div>
         </div>
       </section>
 
@@ -836,60 +543,232 @@ body {
 </div>
 
 <script>
-const REPO = 'zaddyjohn-cyber/mimshak-pak-website';
-const BASE_EDIT = 'https://github.com/' + REPO + '/edit/main/';
+var REPO = 'zaddyjohn-cyber/mimshak-pak-website';
+var FILE_PATH = 'assets/js/main.js';
+var API_BASE = 'https://api.github.com/repos/' + REPO + '/contents/';
+var BASE_EDIT = 'https://github.com/' + REPO + '/edit/main/';
 
-// Credentials (base64 obfuscated)
-const _u = 'bWltc2hha2FkbWlu';
-const _p = 'TWltc2hha1BhazIwMjQ=';
+// ── Auth ──────────────────────────────────────────────
+var _u = 'bWltc2hha2FkbWlu';
+var _p = 'TWltc2hha1BhazIwMjQ=';
 
 function checkCreds(u, p) {
-  try { return btoa(u) === _u && btoa(p) === _p; }
-  catch(e) { return false; }
+  try { return btoa(u) === _u && btoa(p) === _p; } catch(e) { return false; }
 }
 
-// Auth
-const loginScreen = document.getElementById('login-screen');
-const app = document.getElementById('app');
-const form = document.getElementById('login-form');
-const errEl = document.getElementById('login-err');
-
-function tryLogin() {
-  const u = document.getElementById('un').value.trim();
-  const p = document.getElementById('pw').value;
-  if (checkCreds(u, p)) {
-    sessionStorage.setItem('mpk_auth', '1');
-    loginScreen.style.display = 'none';
-    app.classList.add('visible');
-  } else {
-    errEl.textContent = 'Incorrect username or password.';
-    document.getElementById('pw').value = '';
-  }
-}
+var loginScreen = document.getElementById('login-screen');
+var app = document.getElementById('app');
+var errEl = document.getElementById('login-err');
 
 if (sessionStorage.getItem('mpk_auth')) {
   loginScreen.style.display = 'none';
   app.classList.add('visible');
+  onAppReady();
 }
 
-form.addEventListener('submit', function(e) { e.preventDefault(); tryLogin(); });
+document.getElementById('login-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var u = document.getElementById('un').value.trim();
+  var p = document.getElementById('pw').value;
+  if (checkCreds(u, p)) {
+    sessionStorage.setItem('mpk_auth', '1');
+    loginScreen.style.display = 'none';
+    app.classList.add('visible');
+    onAppReady();
+  } else {
+    errEl.textContent = 'Incorrect username or password.';
+    document.getElementById('pw').value = '';
+  }
+});
 
 document.getElementById('logout-btn').addEventListener('click', function() {
   sessionStorage.removeItem('mpk_auth');
   location.reload();
 });
 
-// Nav
-document.querySelectorAll('.nav-item[data-section]').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.nav-item').forEach(function(b){ b.classList.remove('active'); });
-    document.querySelectorAll('.page-section').forEach(function(s){ s.classList.remove('active'); });
-    btn.classList.add('active');
-    document.getElementById('sec-' + btn.dataset.section).classList.add('active');
-  });
+// ── GitHub Token ──────────────────────────────────────
+var TOKEN_KEY = 'mpk_gh_token';
+
+function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
+function hasToken() { return !!getToken(); }
+
+function updateTokenUI() {
+  var has = hasToken();
+  var badge = document.getElementById('settings-token-badge');
+  badge.innerHTML = has
+    ? '<span class="token-badge set">✓ Token saved</span>'
+    : '<span class="token-badge unset">Not set up</span>';
+
+  var ovStatus = document.getElementById('ov-token-status');
+  var ovHint = document.getElementById('ov-token-hint');
+  if (ovStatus) {
+    ovStatus.textContent = has ? 'Ready' : 'Not configured';
+    ovStatus.style.color = has ? 'var(--success)' : 'var(--warn)';
+    ovHint.textContent = has ? 'Direct editing enabled' : 'Go to Settings to set up';
+  }
+
+  var notice = document.getElementById('no-token-notice');
+  if (notice) notice.style.display = has ? 'none' : '';
+}
+
+document.getElementById('btn-save-token').addEventListener('click', function() {
+  var val = document.getElementById('token-input').value.trim();
+  if (!val) { showTokenMsg('Please paste your token first.', 'error'); return; }
+  if (!val.startsWith('github_')) { showTokenMsg('Token should start with github_pat_ or ghp_', 'warn'); return; }
+  localStorage.setItem(TOKEN_KEY, val);
+  document.getElementById('token-input').value = '';
+  showTokenMsg('Token saved to this device.', 'success');
+  updateTokenUI();
 });
 
-// Theme toggle
+document.getElementById('btn-clear-token').addEventListener('click', function() {
+  localStorage.removeItem(TOKEN_KEY);
+  document.getElementById('token-input').value = '';
+  showTokenMsg('Token cleared.', '');
+  updateTokenUI();
+});
+
+function showTokenMsg(msg, type) {
+  var el = document.getElementById('token-save-msg');
+  el.textContent = msg;
+  el.style.color = type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--danger)' : 'var(--warn)';
+}
+
+// ── Contact Editor ────────────────────────────────────
+var currentSha = '';
+var currentContent = '';
+
+var fields = [
+  { id: 'f-phoneDisplay',   key: 'phoneDisplay' },
+  { id: 'f-phoneTel',       key: 'phoneTel' },
+  { id: 'f-phone2Display',  key: 'phone2Display' },
+  { id: 'f-phone2Tel',      key: 'phone2Tel' },
+  { id: 'f-whatsappNumber', key: 'whatsappNumber' },
+  { id: 'f-waMessage',      key: 'waMessage' },
+  { id: 'f-email',          key: 'email' },
+  { id: 'f-address',        key: 'address' },
+  { id: 'f-hours',          key: 'hours' },
+];
+
+function parseField(content, key) {
+  var m = content.match(new RegExp(key + ':\\s*"((?:[^"\\\\]|\\\\.)*)"'));
+  return m ? m[1].replace(/\\"/g, '"') : '';
+}
+
+function updateField(content, key, value) {
+  var escaped = value.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  return content.replace(new RegExp('(' + key + ':\\s*)"(?:[^"\\\\]|\\\\.)*"'), '$1"' + escaped + '"');
+}
+
+function setEditorStatus(msg, type) {
+  ['editor-status','editor-status-2'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) { el.textContent = msg; el.className = 'editor-status' + (type ? ' ' + type : ''); }
+  });
+}
+
+function setSaveBtns(disabled) {
+  document.getElementById('btn-save').disabled = disabled;
+  document.getElementById('btn-save-2').disabled = disabled;
+}
+
+async function loadContactValues() {
+  if (!hasToken()) {
+    setEditorStatus('No GitHub token — go to Settings', 'error');
+    return;
+  }
+  setEditorStatus('Loading current values…', 'loading');
+  document.getElementById('btn-load').disabled = true;
+  setSaveBtns(true);
+  try {
+    var res = await fetch(API_BASE + FILE_PATH, {
+      headers: { 'Authorization': 'Bearer ' + getToken(), 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) throw new Error('GitHub API error: ' + res.status);
+    var data = await res.json();
+    var content = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+    currentSha = data.sha;
+    currentContent = content;
+
+    fields.forEach(function(f) {
+      var el = document.getElementById(f.id);
+      if (el) el.value = parseField(content, f.key);
+    });
+
+    setEditorStatus('Loaded — make your changes then click Save.', 'success');
+    setSaveBtns(false);
+  } catch(err) {
+    setEditorStatus('Failed to load: ' + err.message, 'error');
+  }
+  document.getElementById('btn-load').disabled = false;
+}
+
+async function saveContactValues() {
+  if (!hasToken()) { setEditorStatus('No GitHub token — go to Settings', 'error'); return; }
+  if (!currentContent) { setEditorStatus('Load current values first.', 'error'); return; }
+
+  setEditorStatus('Saving…', 'loading');
+  setSaveBtns(true);
+
+  var content = currentContent;
+  fields.forEach(function(f) {
+    var el = document.getElementById(f.id);
+    if (el) content = updateField(content, f.key, el.value);
+  });
+
+  try {
+    var encoded = btoa(unescape(encodeURIComponent(content)));
+    var res = await fetch(API_BASE + FILE_PATH, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + getToken(),
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify({
+        message: 'Admin panel: update contact details',
+        content: encoded,
+        sha: currentSha,
+        committer: { name: 'Mimshak Admin', email: 'admin@mimshakpak.com' }
+      })
+    });
+    if (!res.ok) {
+      var errData = await res.json();
+      throw new Error(errData.message || res.status);
+    }
+    var updated = await res.json();
+    currentSha = updated.content.sha;
+    currentContent = content;
+    setEditorStatus('Saved! Website updates in about 60 seconds.', 'success');
+    setSaveBtns(false);
+  } catch(err) {
+    setEditorStatus('Save failed: ' + err.message, 'error');
+    setSaveBtns(false);
+  }
+}
+
+document.getElementById('btn-load').addEventListener('click', loadContactValues);
+document.getElementById('btn-save').addEventListener('click', saveContactValues);
+document.getElementById('btn-save-2').addEventListener('click', saveContactValues);
+
+// ── Nav ───────────────────────────────────────────────
+function switchSection(name) {
+  document.querySelectorAll('.nav-item[data-section]').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.page-section').forEach(function(s){ s.classList.remove('active'); });
+  var btn = document.querySelector('.nav-item[data-section="' + name + '"]');
+  var sec = document.getElementById('sec-' + name);
+  if (btn) btn.classList.add('active');
+  if (sec) sec.classList.add('active');
+  if (name === 'contact-editor') {
+    document.getElementById('no-token-notice').style.display = hasToken() ? 'none' : '';
+  }
+}
+
+document.querySelectorAll('.nav-item[data-section]').forEach(function(btn) {
+  btn.addEventListener('click', function() { switchSection(btn.dataset.section); });
+});
+
+// ── Theme ─────────────────────────────────────────────
 var isDark = document.documentElement.dataset.theme === 'dark';
 document.getElementById('theme-toggle').addEventListener('click', function() {
   isDark = !isDark;
@@ -898,18 +777,7 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
   document.getElementById('icon-sun').style.display = isDark ? 'none' : '';
 });
 
-// Copy buttons
-document.querySelectorAll('.copy-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    navigator.clipboard.writeText(btn.dataset.copy).then(function() {
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
-    });
-  });
-});
-
-// Pages table
+// ── Pages Table ───────────────────────────────────────
 var pages = [
   ['Home', 'index.html', 'core'],
   ['About Us', 'about-us.html', 'core'],
@@ -933,22 +801,24 @@ var pages = [
   ['Blog: Minimum Order Quantity', 'blog-minimum-order-quantity-packaging-nigeria.html', 'blog'],
   ['Blog: FMCG Packaging', 'blog-fmcg-packaging-nigeria.html', 'blog'],
   ['FAQ', 'faq.html', 'other'],
-  ['Sitemap', 'sitemap.xml', 'other'],
   ['Privacy Policy', 'privacy.html', 'other'],
 ];
 
 var tbody = document.getElementById('pages-tbody');
 pages.forEach(function(p) {
-  var name = p[0], file = p[1], type = p[2];
   var tr = document.createElement('tr');
   tr.innerHTML =
-    '<td><div class="page-name">' + name + '</div>' +
-    '<div class="page-url">/' + file + '</div></td>' +
-    '<td><code style="font-size:11px;font-family:monospace;color:var(--ink-2)">' + file + '</code></td>' +
-    '<td><span class="tag ' + type + '">' + type + '</span></td>' +
-    '<td><a class="edit-link" href="' + BASE_EDIT + file + '" target="_blank" rel="noopener">Edit ↗</a></td>';
+    '<td><div class="page-name">' + p[0] + '</div><div class="page-url">/' + p[1] + '</div></td>' +
+    '<td><code style="font-size:11px;font-family:monospace;color:var(--ink-2)">' + p[1] + '</code></td>' +
+    '<td><span class="tag ' + p[2] + '">' + p[2] + '</span></td>' +
+    '<td><a class="edit-link" href="' + BASE_EDIT + p[1] + '" target="_blank" rel="noopener">Edit ↗</a></td>';
   tbody.appendChild(tr);
 });
+
+// ── Init ──────────────────────────────────────────────
+function onAppReady() {
+  updateTokenUI();
+}
 </script>
 </body>
 </html>
