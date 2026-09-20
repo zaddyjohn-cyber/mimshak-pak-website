@@ -16,6 +16,7 @@ var PRECACHE = [
   './contact.html',
   './request-a-quote.html',
   './request-a-sample.html',
+  './track-order.html',
   './services.html',
   './products.html',
   './assets/css/styles.css',

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Your Order | Mimshak Pak Investments Ltd.</title>
+<meta name="description" content="Check the progress of your carton or nylon packaging order with Mimshak Pak Investments Ltd. Enter your tracking code to see the current stage.">
+<link rel="canonical" href="https://www.mimshakpak.com/track-order.html">
+<meta property="og:title" content="Track Your Order | Mimshak Pak">
+<meta property="og:description" content="See exactly where your packaging order is in production.">
+<meta property="og:image" content="https://www.mimshakpak.com/assets/img/press-line.jpeg">
+<link rel="icon" href="assets/img/logo.jpeg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e8731a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=6">
+<style>
+.track-box{max-width:620px;margin-inline:auto}
+.track-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(1.3rem,2.6vw,2rem);box-shadow:var(--shadow-sm)}
+.track-code{text-transform:uppercase;letter-spacing:.14em;font-family:var(--head);font-weight:600}
+.track-msg{border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:.9rem;margin-top:1rem;line-height:1.6}
+.track-msg.bad{background:#fdecea;border:1px solid #f5c6c0;color:#a12b1b}
+.track-msg.info{background:var(--bg-2);border:1px solid var(--line);color:var(--ink-2)}
+
+.result{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(1.3rem,2.6vw,2rem);box-shadow:var(--shadow-sm);margin-top:1.4rem}
+.result-head{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between;
+  align-items:flex-start;padding-bottom:1.1rem;border-bottom:1px solid var(--line);margin-bottom:1.4rem}
+.result-head h2{margin:0 0 .2rem;font-size:1.25rem}
+.result-head p{margin:0;color:var(--muted);font-size:.9rem}
+.state{display:inline-block;font-family:var(--head);font-weight:600;font-size:.78rem;
+  padding:.35rem .8rem;border-radius:999px;white-space:nowrap}
+.state.production{background:#fdefe2;color:#9a4d06}
+.state.ready{background:#e6f5ec;color:#1c6b42}
+.state.delivered{background:#e6f5ec;color:#1c6b42}
+.state.confirmed{background:#e8f1fb;color:#1b4f82}
+.state.quote{background:var(--bg-2);color:var(--ink-2)}
+.state.cancelled{background:#fdecea;color:#a12b1b}
+
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{position:relative;padding:0 0 1.5rem 2.2rem}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:0;top:2px;width:15px;height:15px;
+  border-radius:50%;border:2px solid var(--line-2);background:#fff}
+.timeline li::after{content:"";position:absolute;left:7px;top:17px;bottom:-2px;width:2px;background:var(--line)}
+.timeline li:last-child::after{display:none}
+.timeline li.done::before{border-color:var(--accent);background:var(--accent)}
+.timeline li.done::after{background:var(--accent)}
+.timeline li.now::before{border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(232,115,26,.16)}
+.timeline b{display:block;font-family:var(--head);font-size:.96rem;color:var(--ink);font-weight:600}
+.timeline span{font-size:.85rem;color:var(--muted)}
+.timeline li.pending b{color:var(--muted);font-weight:500}
+
+.result-foot{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between}
+.result-foot small{color:var(--muted);font-size:.8rem}
+</style>
+</head>
+<body data-page="track-order">
+
+<section class="pagehero">
+  <img class="hero-bg" src="assets/img/press-line.jpeg" alt="Carton printing line in production at Mimshak Pak, Asaba">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / <span>Track Order</span></div>
+    <h1>Track Your Order</h1>
+    <p>Enter the tracking code we sent you to see exactly where your packaging is.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="track-box">
+
+      <div class="track-form">
+        <form id="track-form" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label>Tracking code <span class="req">*</span></label>
+              <input type="text" id="tk-code" class="track-code" placeholder="MP-XXXX" autocomplete="off" maxlength="12">
+            </div>
+            <div class="field">
+              <label>Last 4 digits of your phone <span class="req">*</span></label>
+              <input type="text" id="tk-phone" placeholder="9976" inputmode="numeric" maxlength="4" autocomplete="off">
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Check my order</button>
+        </form>
+        <div id="tk-msg"></div>
+      </div>
+
+      <div id="tk-result"></div>
+
+      <p class="form-note center" style="margin-top:1.6rem">
+        Lost your code? <a href="https://wa.me/2348037079976" target="_blank" rel="noopener">Message us on WhatsApp</a>
+        or call <a href="tel:+2348037079976">0803 707 9976</a>.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/main.js?v=6"></script>
+<script>
+(function () {
+  "use strict";
+
+  var STAGES = [
+    ["quote",      "Quote sent",       "We have priced your job and sent it to you"],
+    ["confirmed",  "Order confirmed",  "You approved the quote and we scheduled the job"],
+    ["production", "In production",    "Your packaging is being printed and finished"],
+    ["ready",      "Ready",            "Finished and waiting for pickup or delivery"],
+    ["delivered",  "Delivered",        "Handed over to you"]
+  ];
+
+  var form = document.getElementById('track-form');
+  var msgEl = document.getElementById('tk-msg');
+  var resEl = document.getElementById('tk-result');
+  var cache = null;
+
+  function msg(text, kind) {
+    msgEl.innerHTML = text ? '<div class="track-msg ' + kind + '">' + text + '</div>' : '';
+  }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function niceDate(v) {
+    if (!v) return '';
+    var d = new Date(v);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+  }
+
+  function render(o) {
+    var idx = STAGES.map(function (s) { return s[0]; }).indexOf(o.status);
+    var hist = {};
+    (o.history || []).forEach(function (h) { hist[h.status] = h.at; });
+
+    if (o.status === 'cancelled') {
+      resEl.innerHTML =
+        '<div class="result"><div class="result-head"><div>' +
+        '<h2>' + esc(o.code) + '</h2><p>' + esc(o.summary || '') + '</p></div>' +
+        '<span class="state cancelled">Cancelled</span></div>' +
+        '<p style="margin:0;color:var(--muted)">This order was cancelled. If that is not right, please call us.</p>' +
+        '</div>';
+      return;
+    }
+
+    var items = STAGES.map(function (s, i) {
+      var cls = i < idx ? 'done' : i === idx ? 'now done' : 'pending';
+      var when = hist[s[0]] ? niceDate(hist[s[0]]) : (i > idx ? 'Not yet' : '');
+      return '<li class="' + cls + '"><b>' + s[1] + '</b><span>' +
+        (i === idx ? 'Current stage' + (when ? ' — since ' + when : '') : (when || s[2])) +
+        '</span></li>';
+    }).join('');
+
+    var label = (STAGES[idx] || [null, o.status])[1];
+
+    resEl.innerHTML =
+      '<div class="result">' +
+        '<div class="result-head"><div>' +
+          '<h2>' + esc(o.code) + '</h2>' +
+          '<p>' + esc(o.client || '') + (o.summary ? ' • ' + esc(o.summary) : '') + '</p>' +
+        '</div><span class="state ' + esc(o.status) + '">' + esc(label) + '</span></div>' +
+        '<ul class="timeline">' + items + '</ul>' +
+        '<div class="result-foot">' +
+          '<small>' + (o.eta && idx < 4 ? 'Expected ready: <strong>' + niceDate(o.eta) + '</strong>' : '') + '</small>' +
+          '<a class="btn btn--ghost" style="padding:.6rem 1.1rem;font-size:.85rem" target="_blank" rel="noopener" href="https://wa.me/2348037079976?text=' +
+            encodeURIComponent('Hello Mimshak Pak, I am asking about order ' + o.code + '.') +
+            '">Ask about this order</a>' +
+        '</div>' +
+      '</div>';
+    resEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    resEl.innerHTML = '';
+    var code = document.getElementById('tk-code').value.trim().toUpperCase();
+    var phone = document.getElementById('tk-phone').value.replace(/\D/g, '');
+
+    if (!code)            return msg('Enter the tracking code we sent you.', 'bad');
+    if (phone.length !== 4) return msg('Enter the last 4 digits of the phone number on the order.', 'bad');
+
+    msg('Checking…', 'info');
+
+    try {
+      if (!cache) {
+        var r = await fetch('data/tracking.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!r.ok) throw new Error('unavailable');
+        cache = await r.json();
+      }
+    } catch (err) {
+      return msg('We could not check that right now. Please call <a href="tel:+2348037079976">0803 707 9976</a>.', 'bad');
+    }
+
+    var hit = (cache.orders || []).filter(function (o) {
+      return String(o.code).toUpperCase() === code && String(o.phone4) === phone;
+    })[0];
+
+    if (!hit) {
+      return msg('We could not find an order with that code and phone number. ' +
+        'Check both and try again, or <a href="https://wa.me/2348037079976" target="_blank" rel="noopener">message us</a>.', 'bad');
+    }
+
+    msg('', '');
+    render(hit);
+  });
+
+  document.getElementById('tk-code').addEventListener('input', function () {
+    this.value = this.value.toUpperCase();
+  });
+})();
+</script>
+</body>
+</html>

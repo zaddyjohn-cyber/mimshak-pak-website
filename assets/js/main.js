@@ -389,6 +389,7 @@
           '<li><a href="blog.html">Blog</a></li>' +
           '<li><a href="packaging-cost-calculator.html">Cost Calculator</a></li>' +
           '<li><a href="request-a-sample.html">Request a Sample</a></li>' +
+          '<li><a href="track-order.html">Track Your Order</a></li>' +
           '<li><a href="request-a-quote.html">Request a Quote</a></li>' +
         "</ul></div>" +
         "<div><h4>Our Services</h4><ul>" + serviceLinks + "</ul></div>" +
