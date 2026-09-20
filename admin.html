@@ -542,6 +542,9 @@ body { font-family: var(--font); background: var(--bg); color: var(--ink); min-h
   </div>
 </div>
 
+<script src="assets/js/admin-finance.js"></script>
+<script src="assets/js/admin-finance-ui.js"></script>
+<script src="assets/js/admin-finance-forms.js"></script>
 <script>
 var REPO = 'zaddyjohn-cyber/mimshak-pak-website';
 var FILE_PATH = 'assets/js/main.js';
@@ -762,6 +765,7 @@ function switchSection(name) {
   if (name === 'contact-editor') {
     document.getElementById('no-token-notice').style.display = hasToken() ? 'none' : '';
   }
+  if (window.MPF && MPF.onSection) MPF.onSection(name);
 }
 
 document.querySelectorAll('.nav-item[data-section]').forEach(function(btn) {
@@ -818,6 +822,7 @@ pages.forEach(function(p) {
 // ── Init ──────────────────────────────────────────────
 function onAppReady() {
   updateTokenUI();
+  if (window.MPF && MPF.boot) MPF.boot();
 }
 </script>
 </body>
