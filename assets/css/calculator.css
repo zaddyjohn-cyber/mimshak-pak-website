@@ -1,0 +1,98 @@
+/* =================================================================
+   Mimshak Pak — Packaging cost calculator
+   Loaded only on packaging-cost-calculator.html
+   ================================================================= */
+
+.calc-wrap{display:grid;grid-template-columns:1fr 400px;gap:clamp(1.5rem,3vw,2.5rem);align-items:start}
+@media(max-width:940px){.calc-wrap{grid-template-columns:1fr}}
+
+/* ---- presets ---- */
+.calc-presets{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.6rem}
+.calc-chip{font-family:var(--head);font-weight:500;font-size:.82rem;color:var(--ink-2);
+  background:#fff;border:1px solid var(--line-2);border-radius:999px;padding:.44rem .95rem;
+  cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.calc-chip:hover{border-color:var(--accent);color:var(--accent-dk)}
+.calc-chip.is-on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ---- input card ---- */
+.calc-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(1.3rem,2.4vw,1.9rem);box-shadow:var(--shadow-sm)}
+
+.calc-switch{display:flex;gap:.4rem;background:var(--bg-2);border-radius:var(--radius-sm);
+  padding:.3rem;margin-bottom:1.5rem}
+.calc-switch button{flex:1;font-family:var(--head);font-weight:600;font-size:.88rem;
+  padding:.62rem .8rem;border:0;background:transparent;color:var(--muted);
+  border-radius:var(--radius-sm);cursor:pointer;transition:background .15s,color .15s}
+.calc-switch button:hover{color:var(--ink)}
+.calc-switch button.is-on{background:#fff;color:var(--ink);box-shadow:var(--shadow-sm)}
+
+.calc-legend{font-family:var(--head);font-weight:600;font-size:.78rem;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);margin:1.5rem 0 .8rem;
+  padding-bottom:.5rem;border-bottom:1px solid var(--line)}
+.calc-legend:first-of-type{margin-top:0}
+
+.calc-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 .8rem}
+.calc-row.two{grid-template-columns:1fr 1fr}
+@media(max-width:520px){.calc-row,.calc-row.two{grid-template-columns:1fr 1fr}}
+
+.calc-card .field{margin-bottom:.9rem}
+.calc-card .field label{font-size:.8rem}
+.calc-card .field input,.calc-card .field select{padding:.7rem .8rem;font-size:.95rem}
+.calc-suffix{font-size:.74rem;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0}
+
+.calc-check{display:flex;align-items:flex-start;gap:.6rem;padding:.7rem .85rem;border:1px solid var(--line-2);
+  border-radius:var(--radius-sm);margin-bottom:.7rem;cursor:pointer;transition:border-color .15s,background .15s}
+.calc-check:hover{border-color:var(--line-2);background:var(--bg-2)}
+.calc-check input{width:17px;height:17px;margin:2px 0 0;accent-color:var(--accent);flex:0 0 auto;cursor:pointer}
+.calc-check span{font-size:.9rem;color:var(--ink-2);line-height:1.45}
+.calc-check span b{display:block;font-family:var(--head);font-weight:600;font-size:.88rem;color:var(--ink)}
+
+/* ---- result panel ---- */
+.calc-result{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(1.2rem,2.2vw,1.6rem);box-shadow:var(--shadow-sm);position:sticky;top:96px}
+@media(max-width:940px){.calc-result{position:static}}
+
+.calc-empty{text-align:center;padding:2.4rem 1rem;color:var(--muted)}
+.calc-empty svg{color:var(--line-2);margin-bottom:.7rem}
+.calc-empty p{font-size:.92rem;margin:0}
+
+.calc-headline{padding-bottom:1.1rem;border-bottom:1px solid var(--line);margin-bottom:1.1rem}
+.calc-label{font-family:var(--head);font-weight:600;font-size:.74rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.35rem}
+.calc-range{font-family:var(--head);font-weight:700;font-size:clamp(1.55rem,3.4vw,2rem);
+  color:var(--accent-dk);line-height:1.15;letter-spacing:-.01em}
+.calc-per{font-size:.87rem;color:var(--muted);margin-top:.35rem}
+
+.calc-block h4,.calc-setup h4{font-family:var(--head);font-weight:600;font-size:.74rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .6rem}
+.calc-block{margin-bottom:1.1rem}
+
+.calc-lines{width:100%;border-collapse:collapse;font-size:.88rem}
+.calc-lines td{padding:.42rem 0;color:var(--ink-2);vertical-align:top}
+.calc-lines td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+.calc-lines tr.sum td{border-top:1px solid var(--line);padding-top:.6rem;margin-top:.3rem;
+  font-family:var(--head);font-weight:600;color:var(--ink)}
+.calc-lines tr.disc td{color:var(--accent-dk)}
+
+.calc-setup{background:var(--bg-2);border-radius:var(--radius-sm);padding:.9rem 1rem;margin-bottom:1.1rem}
+.calc-hint{font-size:.78rem;color:var(--muted);margin:.6rem 0 0;line-height:1.5}
+
+.calc-upsell{background:#fff8f1;border:1px solid #f6d9bc;border-radius:var(--radius-sm);
+  padding:.75rem .9rem;font-size:.85rem;color:var(--brown);margin-bottom:1.1rem;line-height:1.5}
+.calc-upsell strong{color:var(--accent-dk)}
+
+.calc-warn{background:#fdf4e7;border:1px solid #f0d9b0;border-left:3px solid var(--gold);
+  border-radius:var(--radius-sm);padding:.75rem .9rem;font-size:.85rem;color:var(--brown);
+  margin-bottom:1.1rem;line-height:1.5}
+
+.calc-actions{display:grid;gap:.6rem;margin-bottom:.9rem}
+.calc-actions .btn{width:100%;justify-content:center;font-size:.9rem}
+
+.calc-disclaimer{font-size:.76rem;color:var(--muted);line-height:1.55;margin:0;
+  padding-top:.9rem;border-top:1px solid var(--line)}
+
+/* ---- explainer strip ---- */
+.calc-why{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:var(--space)}
+@media(max-width:820px){.calc-why{grid-template-columns:1fr}}
+.calc-why .card h3{font-size:1rem}
+.calc-why .card p{margin-bottom:0}

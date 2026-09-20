@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packaging Cost Calculator | Carton &amp; Nylon Prices in Nigeria | Mimshak Pak</title>
+<meta name="description" content="Work out what your printed cartons or nylon packaging will cost. Enter your size, material, printing and quantity for an instant estimate from Mimshak Pak Investments Ltd., Asaba.">
+<link rel="canonical" href="https://www.mimshakpak.com/packaging-cost-calculator.html">
+<meta name="keywords" content="packaging cost calculator Nigeria, carton price calculator, nylon packaging price Nigeria, how much does packaging cost in Nigeria, carton printing price Asaba">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Packaging Cost Calculator | Mimshak Pak">
+<meta property="og:description" content="Enter your packaging size, material and quantity to see an instant cost estimate.">
+<meta property="og:image" content="https://www.mimshakpak.com/assets/img/printing-press-rotogravure.jpeg">
+<meta property="og:url" content="https://www.mimshakpak.com/packaging-cost-calculator.html">
+<link rel="icon" href="assets/img/logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/calculator.css?v=1">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How much does carton packaging cost in Nigeria?","acceptedAnswer":{"@type":"Answer","text":"Carton cost depends on the box size, whether it is single or double wall, how many print colours you need, and the quantity ordered. A larger order lowers the cost per carton because printing plates and cutting dies are charged once for the whole run."}},
+    {"@type":"Question","name":"Why does a small order cost more per unit?","acceptedAnswer":{"@type":"Answer","text":"Printing plates and cutting dies are one-off setup costs charged once per job, not per item. On a small run that setup is shared across fewer units, so each unit carries more of it."}},
+    {"@type":"Question","name":"What is the minimum order for printed packaging?","acceptedAnswer":{"@type":"Answer","text":"Our usual minimum is 500 units for printed cartons and 1,000 units for nylon packaging. Smaller runs can sometimes be arranged — contact us with your requirement."}},
+    {"@type":"Question","name":"Is the calculator estimate the final price?","acceptedAnswer":{"@type":"Answer","text":"No. It is an indicative estimate based on typical production costs. The final quote depends on your artwork, finishing and current material prices. Send us your specification for a firm quote."}}
+  ]
+}
+</script>
+</head>
+<body data-page="packaging-cost-calculator">
+
+<section class="pagehero">
+  <img class="hero-bg" src="assets/img/printing-press-rotogravure.jpeg" alt="Carton printing press at Mimshak Pak in Asaba">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / <span>Cost Calculator</span></div>
+    <h1>Packaging Cost Calculator</h1>
+    <p>Enter your packaging size, material and quantity to see an instant estimate. No sign-up, no waiting for a call back.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="calc-presets">
+      <button type="button" class="calc-chip" data-preset='{"mode":"carton","fields":{"c-len":12,"c-wid":8,"c-hgt":5,"c-wall":"single","c-colours":"4","c-qty":5000,"c-lam":true,"c-die":true}}'>Soap or cosmetics carton</button>
+      <button type="button" class="calc-chip" data-preset='{"mode":"carton","fields":{"c-len":40,"c-wid":30,"c-hgt":25,"c-wall":"double","c-colours":"1","c-qty":1000,"c-lam":false,"c-die":false}}'>Shipping carton</button>
+      <button type="button" class="calc-chip" data-preset='{"mode":"carton","fields":{"c-len":25,"c-wid":18,"c-hgt":10,"c-wall":"single","c-colours":"2","c-qty":2000,"c-lam":false,"c-die":false}}'>Food or pastry box</button>
+      <button type="button" class="calc-chip" data-preset='{"mode":"nylon","fields":{"n-wid":30,"n-hgt":45,"n-mic":40,"n-mat":"ldpe","n-colours":"2","n-qty":10000}}'>Bread bag</button>
+      <button type="button" class="calc-chip" data-preset='{"mode":"nylon","fields":{"n-wid":25,"n-hgt":35,"n-mic":50,"n-mat":"hdpe","n-colours":"1","n-qty":5000}}'>Shopping bag</button>
+    </div>
+
+    <div class="calc-wrap" id="calc" data-mode="carton">
+
+      <!-- ============ inputs ============ -->
+      <div class="calc-card">
+        <div class="calc-switch" role="tablist" aria-label="Packaging type">
+          <button type="button" data-mode="carton" class="is-on" role="tab" aria-selected="true">Printed cartons</button>
+          <button type="button" data-mode="nylon" role="tab" aria-selected="false">Nylon packaging</button>
+        </div>
+
+        <!-- carton -->
+        <div id="panel-carton">
+          <div class="calc-legend">Carton size</div>
+          <div class="calc-row">
+            <div class="field"><label for="c-len">Length <span class="calc-suffix">cm</span></label>
+              <input type="number" id="c-len" min="1" step="0.5" value="30" inputmode="decimal"></div>
+            <div class="field"><label for="c-wid">Width <span class="calc-suffix">cm</span></label>
+              <input type="number" id="c-wid" min="1" step="0.5" value="20" inputmode="decimal"></div>
+            <div class="field"><label for="c-hgt">Height <span class="calc-suffix">cm</span></label>
+              <input type="number" id="c-hgt" min="1" step="0.5" value="15" inputmode="decimal"></div>
+          </div>
+
+          <div class="calc-legend">Board and printing</div>
+          <div class="calc-row two">
+            <div class="field"><label for="c-wall">Board type</label>
+              <select id="c-wall">
+                <option value="single">Single wall — light products</option>
+                <option value="double">Double wall — heavy or stacked</option>
+              </select></div>
+            <div class="field"><label for="c-colours">Print colours</label>
+              <select id="c-colours">
+                <option value="0">Plain, no printing</option>
+                <option value="1">1 colour</option>
+                <option value="2" selected>2 colours</option>
+                <option value="3">3 colours</option>
+                <option value="4">Full colour (4)</option>
+              </select></div>
+          </div>
+
+          <label class="calc-check" for="c-lam">
+            <input type="checkbox" id="c-lam">
+            <span><b>Add lamination</b>Gloss or matt finish. Protects the print and looks premium on shelf.</span>
+          </label>
+          <label class="calc-check" for="c-die">
+            <input type="checkbox" id="c-die">
+            <span><b>Custom shape or window</b>Needs a cutting die made. One-off cost, reusable on repeat orders.</span>
+          </label>
+
+          <div class="calc-legend">Quantity</div>
+          <div class="field"><label for="c-qty">How many cartons do you need?</label>
+            <input type="number" id="c-qty" min="1" step="100" value="2000" inputmode="numeric"></div>
+        </div>
+
+        <!-- nylon -->
+        <div id="panel-nylon" hidden>
+          <div class="calc-legend">Bag size</div>
+          <div class="calc-row two">
+            <div class="field"><label for="n-wid">Width <span class="calc-suffix">cm</span></label>
+              <input type="number" id="n-wid" min="1" step="0.5" value="30" inputmode="decimal"></div>
+            <div class="field"><label for="n-hgt">Height <span class="calc-suffix">cm</span></label>
+              <input type="number" id="n-hgt" min="1" step="0.5" value="45" inputmode="decimal"></div>
+          </div>
+
+          <div class="calc-legend">Material and printing</div>
+          <div class="calc-row two">
+            <div class="field"><label for="n-mat">Film type</label>
+              <select id="n-mat">
+                <option value="ldpe">LDPE — soft, flexible</option>
+                <option value="hdpe">HDPE — stronger, crinkly</option>
+                <option value="pp">PP — clear and glossy</option>
+              </select></div>
+            <div class="field"><label for="n-mic">Thickness <span class="calc-suffix">microns</span></label>
+              <input type="number" id="n-mic" min="10" step="5" value="40" inputmode="numeric"></div>
+          </div>
+          <div class="calc-row two">
+            <div class="field"><label for="n-colours">Print colours</label>
+              <select id="n-colours">
+                <option value="0">Plain, no printing</option>
+                <option value="1">1 colour</option>
+                <option value="2" selected>2 colours</option>
+                <option value="3">3 colours</option>
+                <option value="4">Full colour (4)</option>
+              </select></div>
+            <div class="field"><label for="n-qty">Quantity</label>
+              <input type="number" id="n-qty" min="1" step="500" value="10000" inputmode="numeric"></div>
+          </div>
+          <p class="calc-hint">Not sure about thickness? 30&ndash;40 microns suits bread and light goods. 50&ndash;80 microns suits shopping bags and heavier products.</p>
+        </div>
+      </div>
+
+      <!-- ============ result ============ -->
+      <aside class="calc-result" id="calc-out" aria-live="polite"></aside>
+
+    </div>
+
+    <!-- ============ explainer ============ -->
+    <div class="calc-why">
+      <div class="card">
+        <h3>Why bigger orders cost less</h3>
+        <p>Printing plates and cutting dies are made once for your job, not once per carton. On a 10,000 run that setup is shared across ten times more units than on a 1,000 run, so each unit carries far less of it.</p>
+      </div>
+      <div class="card">
+        <h3>What changes the price most</h3>
+        <p>Size and board type drive material cost, and material is the biggest single line. Dropping from double wall to single wall, or trimming a few centimetres off the box, often saves more than cutting print colours.</p>
+      </div>
+      <div class="card">
+        <h3>Getting a firm price</h3>
+        <p>This estimate uses typical production costs. Your real quote depends on your artwork, finishing and the board price on the day. Send us the spec and we will confirm the price and lead time, free.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-2)">
+  <div class="container" style="text-align:center;max-width:760px">
+    <span class="eyebrow">Ready When You Are</span>
+    <h2>Prefer to talk it through?</h2>
+    <p>Tell us what you are packaging and we will recommend the right board, size and finish — then quote you properly.</p>
+    <div class="btn-row" style="justify-content:center;margin-top:1.4rem">
+      <a class="btn btn--primary" href="request-a-quote.html">Request a Quote</a>
+      <a class="btn btn--ghost" href="https://wa.me/2348037079976" target="_blank" rel="noopener">Call / WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/main.js?v=4"></script>
+<script src="assets/js/quote-rates.js?v=1"></script>
+<script src="assets/js/quote-calc.js?v=1"></script>
+</body>
+</html>

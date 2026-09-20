@@ -80,6 +80,7 @@
     ]},
     { label: "Industries", href: "industries.html" },
     { label: "Products", href: "products.html" },
+    { label: "Cost Calculator", href: "packaging-cost-calculator.html" },
     { label: "Gallery", href: "gallery.html" },
     { label: "Blog", href: "blog.html" },
     { label: "Contact", href: "contact.html" }
@@ -329,6 +330,36 @@
 
   // ---- Forms (front-end only until wired to a backend) ----
   function wireForms() {
+    // Pre-fill the quote form when arriving from the cost calculator
+    (function prefillFromQuery() {
+      if (!window.location.search) return;
+      var q = new URLSearchParams(window.location.search);
+      var form = document.querySelector("form[data-form]");
+      if (!form) return;
+
+      ["packaging", "size", "quantity", "product"].forEach(function (key) {
+        var v = q.get(key);
+        if (!v) return;
+        var el = form.querySelector('[name="' + key + '"]');
+        if (!el) return;
+        if (el.tagName === "SELECT") {
+          for (var i = 0; i < el.options.length; i++) {
+            if (el.options[i].text.trim() === v.trim()) { el.selectedIndex = i; return; }
+          }
+        } else { el.value = v; }
+      });
+
+      var est = q.get("est");
+      if (est) {
+        var msg = form.querySelector('[name="message"]');
+        if (msg) {
+          msg.value = "I used the cost calculator on your website and it estimated " + est +
+            " for this specification. Please confirm the actual price and lead time.";
+        }
+      }
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
+    })();
+
     document.querySelectorAll("form[data-form]").forEach(function (form) {
       form.addEventListener("submit", function (e) {
         e.preventDefault();
