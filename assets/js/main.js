@@ -23,6 +23,17 @@
   var WA_LINK = "https://wa.me/" + CONTACT.whatsappNumber + "?text=" + encodeURIComponent(CONTACT.waMessage);
   window.MPI_CONTACT = CONTACT;
 
+  // ---- Registration and certification numbers ----
+  // Leave a value empty ("") and that badge is hidden automatically.
+  // Only enter numbers the company genuinely holds.
+  var CREDENTIALS = {
+    cacNumber:     "",   // CAC / RC registration number, e.g. "RC 1234567"
+    sonNumber:     "",   // SON product certification number, if held
+    nafdacNumber:  "",   // NAFDAC number, if held
+    yearEstablished: ""  // e.g. "2015"
+  };
+  window.MPI_CREDENTIALS = CREDENTIALS;
+
   // ---- Line-icon sprite (replaces emoji icons site-wide) ----
   var SPRITE = [
     '<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>',
@@ -187,6 +198,106 @@
       '<a class="mb-call" href="tel:' + CONTACT.phoneTel + '">Call Now</a>' +
       '<a class="mb-wa" href="' + WA_LINK + '" target="_blank" rel="noopener">WhatsApp</a>';
     document.body.appendChild(bar);
+  }
+
+  // ---- Customer reviews ----
+  function stars(n) {
+    var out = "";
+    for (var i = 1; i <= 5; i++) {
+      out += '<svg class="star' + (i <= n ? " on" : "") + '" viewBox="0 0 20 20" aria-hidden="true">' +
+        '<path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg>';
+    }
+    return out;
+  }
+
+  function buildReviews() {
+    var host = document.querySelector("[data-reviews]");
+    if (!host) return;
+    var list = (window.MPI_REVIEWS || []).filter(function (r) { return r && r.text && r.name; });
+    if (!list.length) { (host.closest("section") || host).remove(); return; }
+
+    var limit = parseInt(host.getAttribute("data-reviews"), 10);
+    var shown = limit > 0 ? list.slice(0, limit) : list;
+
+    host.innerHTML =
+      '<div class="reviews-grid">' +
+      shown.map(function (r) {
+        var who = [r.company, r.location].filter(Boolean).join(" • ");
+        return '<figure class="review">' +
+          '<div class="review-stars" aria-label="' + (r.rating || 5) + ' out of 5">' + stars(r.rating || 5) + "</div>" +
+          "<blockquote>" + escapeHtml(r.text) + "</blockquote>" +
+          '<figcaption><strong>' + escapeHtml(r.name) + "</strong>" +
+          (who ? "<span>" + escapeHtml(who) + "</span>" : "") +
+          (r.product ? '<span class="review-tag">' + escapeHtml(r.product) + "</span>" : "") +
+          "</figcaption></figure>";
+      }).join("") +
+      "</div>";
+
+    // Structured data — only ever emitted for reviews that actually exist
+    var total = list.reduce(function (s, r) { return s + (Number(r.rating) || 5); }, 0);
+    var schema = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: CONTACT.name,
+      address: { "@type": "PostalAddress", streetAddress: CONTACT.address,
+                 addressLocality: "Asaba", addressRegion: "Delta State", addressCountry: "NG" },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: (total / list.length).toFixed(1),
+        reviewCount: list.length, bestRating: 5, worstRating: 1
+      },
+      review: list.map(function (r) {
+        return {
+          "@type": "Review",
+          author: { "@type": "Person", name: r.name },
+          reviewRating: { "@type": "Rating", ratingValue: Number(r.rating) || 5, bestRating: 5, worstRating: 1 },
+          reviewBody: r.text,
+          datePublished: r.date || undefined
+        };
+      })
+    };
+    var s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(schema);
+    document.head.appendChild(s);
+  }
+
+  function escapeHtml(v) {
+    return String(v == null ? "" : v)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+
+  // ---- Credentials strip above the footer ----
+  function buildTrustBar() {
+    var items = [];
+    if (CREDENTIALS.cacNumber)
+      items.push(["i-shield", "Registered in Nigeria", "CAC " + CREDENTIALS.cacNumber]);
+    else
+      items.push(["i-shield", "Registered in Nigeria", "Corporate Affairs Commission"]);
+
+    if (CREDENTIALS.sonNumber)
+      items.push(["i-target", "SON certified", CREDENTIALS.sonNumber]);
+    if (CREDENTIALS.nafdacNumber)
+      items.push(["i-pill", "NAFDAC listed", CREDENTIALS.nafdacNumber]);
+
+    items.push(["i-factory", "Manufactured in Asaba", "Our own production floor"]);
+    items.push(["i-layers", "Cartons and nylon", "Both under one roof"]);
+
+    if (CREDENTIALS.yearEstablished) {
+      var yrs = new Date().getFullYear() - parseInt(CREDENTIALS.yearEstablished, 10);
+      if (yrs > 0) items.push(["i-clock", yrs + " years in business", "Since " + CREDENTIALS.yearEstablished]);
+    }
+
+    var sec = document.createElement("section");
+    sec.className = "credbar";
+    sec.innerHTML = '<div class="container"><div class="credbar-grid">' +
+      items.map(function (i) {
+        return '<div class="cred"><svg class="icon" aria-hidden="true"><use href="#' + i[0] + '"></use></svg>' +
+          "<div><strong>" + i[1] + "</strong><span>" + i[2] + "</span></div></div>";
+      }).join("") +
+      "</div></div>";
+    document.body.appendChild(sec);
   }
 
   function buildFooter() {
@@ -376,6 +487,8 @@
     buildHeader();
     buildMobileNav();
     buildFloaters();
+    buildReviews();
+    buildTrustBar();
     buildFooter();
     initHeroSlider();
     initCardVideos();

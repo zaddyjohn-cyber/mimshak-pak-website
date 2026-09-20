@@ -295,7 +295,8 @@
     ['payments', 'Payments',  'M2 5h16a1 1 0 011 1v8a1 1 0 01-1 1H2a1 1 0 01-1-1V6a1 1 0 011-1zm8 3a2 2 0 100 4 2 2 0 000-4zM3 7h2v6H3V7zm12 0h2v6h-2V7z'],
     ['expenses', 'Expenses',  'M5 2h10a1 1 0 011 1v15l-2-1.5L12 18l-2-1.5L8 18l-2-1.5L4 18V3a1 1 0 011-1zm2 4h6v1.5H7V6zm0 3h6v1.5H7V9zm0 3h4v1.5H7V12z'],
     ['reports',  'Reports',   'M4 3h12a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1zm2 9h2v3H6v-3zm3.5-4h2v7h-2V8zM13 5h2v10h-2V5z'],
-    ['pricing',  'Pricing',   'M10 2H4a2 2 0 00-2 2v6l8 8 8-8-8-8zm-3.5 5A1.5 1.5 0 118 5.5 1.5 1.5 0 016.5 7z']
+    ['pricing',  'Pricing',   'M10 2H4a2 2 0 00-2 2v6l8 8 8-8-8-8zm-3.5 5A1.5 1.5 0 118 5.5 1.5 1.5 0 016.5 7z'],
+    ['reviews',  'Reviews',   'M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z']
   ];
 
   function injectNav() {
@@ -423,6 +424,11 @@
       title: 'Calculator Pricing',
       sub: 'These are the figures the cost calculator on the website uses. Change them here and the website updates in about a minute.',
       body: '<div id="mpf-pricing"></div>'
+    },
+    reviews: {
+      title: 'Customer Reviews',
+      sub: 'Reviews shown on the website and sent to Google as star ratings. Only publish reviews a real customer gave you.',
+      body: '<div id="mpf-reviews"></div>'
     }
   };
 
