@@ -101,6 +101,7 @@
         '<td><div style="display:flex;gap:5px;flex-wrap:wrap">' +
           '<button class="mpf-mini" data-act="invoice" data-id="' + o.id + '">Invoice</button>' +
           (cancelled ? '' : '<button class="mpf-mini" data-act="order-status" data-id="' + o.id + '">Status</button>') +
+          (MPF.emailButton ? MPF.emailButton(o) : '') +
         '</div></td>' +
       '</tr>';
     }).join('');
