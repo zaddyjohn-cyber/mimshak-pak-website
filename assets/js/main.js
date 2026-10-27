@@ -81,19 +81,18 @@
   // ---- Navigation model ----
   var NAV = [
     { label: "Home", href: "index.html" },
-    { label: "About Us", href: "about-us.html" },
-    { label: "Services", href: "services.html", sub: [
+    { label: "About", href: "about-us.html" },
+    { label: "Solutions", href: "services.html", sub: [
       { label: "Carton Printing in Asaba", href: "services-carton-printing-asaba.html" },
       { label: "Custom Carton Packaging", href: "services-custom-carton-packaging.html" },
       { label: "Nylon Print Packaging", href: "services-nylon-print-packaging.html" },
       { label: "Industrial Packaging", href: "services-industrial-packaging.html" },
-      { label: "Branded Product Packaging", href: "services-branded-product-packaging.html" }
+      { label: "Branded Product Packaging", href: "services-branded-product-packaging.html" },
+      { label: "All products", href: "products.html" }
     ]},
     { label: "Industries", href: "industries.html" },
-    { label: "Products", href: "products.html" },
-    { label: "Cost Calculator", href: "packaging-cost-calculator.html" },
-    { label: "Gallery", href: "gallery.html" },
-    { label: "Blog", href: "blog.html" },
+    { label: "Our Work", href: "gallery.html" },
+    { label: "Insights", href: "blog.html" },
     { label: "Contact", href: "contact.html" }
   ];
 
@@ -494,10 +493,33 @@
     });
   }
 
+  // ---- Category filters (gallery / portfolio) ----
+  function initFilters() {
+    document.querySelectorAll(".filters").forEach(function (bar) {
+      var scope = bar.parentElement;
+      var items = scope.querySelectorAll("[data-cat]");
+      if (!items.length) return;
+      bar.addEventListener("click", function (e) {
+        var btn = e.target.closest(".filter");
+        if (!btn) return;
+        var want = btn.getAttribute("data-filter");
+        bar.querySelectorAll(".filter").forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        items.forEach(function (el) {
+          var show = want === "all" || el.getAttribute("data-cat") === want;
+          el.classList.toggle("is-hidden", !show);
+        });
+      });
+    });
+  }
+
   // ---- Scroll reveal ----
   function initReveal() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var targets = document.querySelectorAll(".card, .icard, .step, .post-card, .split-media, .stat, .spec, .brand-item, .video-card");
+    var targets = document.querySelectorAll(".card, .icard, .step, .post-card, .split-media, .stat, .spec, .brand-item, .video-card, .fpanel, .tile, .ind, .tstep, .gal-item, .review, .cinfo-item");
     if (!("IntersectionObserver" in window) || !targets.length) return;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -574,6 +596,7 @@
     initHeroSlider();
     initCardVideos();
     buildLightbox();
+    initFilters();
     initReveal();
     wireForms();
     registerSW();
