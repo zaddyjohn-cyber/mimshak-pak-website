@@ -565,14 +565,100 @@
       form.scrollIntoView({ behavior: "smooth", block: "start" });
     })();
 
+    // The status panels usually sit beside the form inside .form-wrap rather
+    // than within it, so search the surrounding block as well as the form.
+    function panel(form, cls) {
+      return form.querySelector(cls) ||
+             (form.closest(".form-wrap") || form.parentElement || document).querySelector(cls);
+    }
+
     document.querySelectorAll("form[data-form]").forEach(function (form) {
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        if (!form.checkValidity()) { form.reportValidity(); return; }
-        var ok = form.querySelector(".form-success");
+
+        var ok = panel(form, ".form-success");
+        var bad = panel(form, ".form-error");
+        if (ok) ok.classList.remove("show");
+        if (bad) bad.classList.remove("show");
+
+        // Honeypot: real people never fill a field they cannot see.
+        var hp = form.querySelector('input[name="website"]');
+        if (hp && hp.value) { form.reset(); return; }
+
+        if (!form.checkValidity()) {
+          if (bad) bad.classList.add("show");
+          form.reportValidity();
+          return;
+        }
+
+        if (FORM_ENDPOINT) { submitToEndpoint(form, ok, bad); return; }
+
+        // No mail server is attached to this static site. Hand the message
+        // to the visitor's own email app rather than claiming we sent it.
+        openMailDraft(form);
         if (ok) { ok.classList.add("show"); ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
-        form.reset();
       });
+    });
+  }
+
+  // Set this to a form service URL (Formspree, Getform, a Worker, ...) to
+  // post submissions directly. While it is empty the forms compose an email
+  // instead, and never report a send that did not happen.
+  var FORM_ENDPOINT = "";
+
+  var FIELD_LABELS = {
+    company: "Company", name: "Contact name", email: "Email", phone: "Phone / WhatsApp",
+    packaging: "Packaging type", industry: "Industry", product: "Product",
+    size: "Dimensions", quantity: "Quantity", colours: "Print colours",
+    city: "Delivery city", timeline: "Timeline", subject: "Subject", message: "Message"
+  };
+
+  function formPairs(form) {
+    var out = [];
+    new FormData(form).forEach(function (v, k) {
+      if (k === "website" || !String(v).trim()) return;
+      out.push([FIELD_LABELS[k] || k, String(v).trim()]);
+    });
+    return out;
+  }
+
+  function openMailDraft(form) {
+    var kind = form.getAttribute("data-form-kind") || "enquiry";
+    var subject = kind === "quote" ? "Packaging quote request"
+                : kind === "sample" ? "Packaging sample request"
+                : "Website enquiry";
+    var pairs = formPairs(form);
+    var who = pairs.filter(function (p) { return p[0] === "Company" || p[0] === "Contact name"; })
+                   .map(function (p) { return p[1]; })[0];
+    if (who) subject += " - " + who;
+
+    var body = pairs.map(function (p) { return p[0] + ": " + p[1]; }).join("\n");
+    window.location.href = "mailto:" + CONTACT.email +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+  }
+
+  function submitToEndpoint(form, ok, bad) {
+    var btn = form.querySelector('button[type="submit"]');
+    var label = btn ? btn.textContent : "";
+    if (btn) { btn.disabled = true; btn.textContent = "Sending..."; }
+
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(form)
+    }).then(function (res) {
+      if (!res.ok) throw new Error(res.status);
+      if (ok) { ok.classList.add("show"); ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      form.reset();
+    }).catch(function () {
+      if (bad) {
+        bad.textContent = "We could not send that just now. Please try again, or reach us on WhatsApp or by phone.";
+        bad.classList.add("show");
+        bad.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }).then(function () {
+      if (btn) { btn.disabled = false; btn.textContent = label; }
     });
   }
 

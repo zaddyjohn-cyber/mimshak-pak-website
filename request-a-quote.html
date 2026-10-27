@@ -4,18 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request a Packaging Quote | Mimshak Pak Investments Ltd.</title>
-<meta name="description" content="Request a quote for carton printing, custom carton packaging, nylon print packaging, industrial or branded packaging from Mimshak Pak Investments Ltd. in Asaba, Nigeria.">
+<meta name="description" content="Request a quote for printed cartons, custom carton packaging or branded nylon packaging from Mimshak Pak Investments Ltd. in Asaba, Delta State.">
 <link rel="canonical" href="https://www.mimshakpak.com/request-a-quote.html">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Request a Packaging Quote | Mimshak Pak">
-<meta property="og:description" content="Get a clear quote for cartons and nylon packaging for your business.">
-<meta property="og:image" content="https://www.mimshakpak.com/assets/img/printing-press-rotogravure.jpeg">
+<meta property="og:description" content="Tell us your product, size and quantity and we will come back with a clear quote.">
+<meta property="og:image" content="https://www.mimshakpak.com/assets/img/press-line.jpeg">
+<meta property="og:url" content="https://www.mimshakpak.com/request-a-quote.html">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/logo.jpeg">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#e8731a">
+<meta name="theme-color" content="#0F1B2A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=12">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=16">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mimshakpak.com/"},
+{"@type":"ListItem","position":2,"name":"Request a Quote","item":"https://www.mimshakpak.com/request-a-quote.html"}]}
+</script>
 </head>
 <body data-page="request-a-quote">
 
@@ -24,11 +32,11 @@
     <div class="pagehero-grid">
       <div>
         <div class="crumbs"><a href="index.html">Home</a> / <span>Request a Quote</span></div>
-    <h1>Request a Packaging Quote</h1>
-    <p>Tell us about your packaging need and our team will recommend the best option and prepare a clear quote.</p>
+        <h1>Request a packaging quote</h1>
+        <p>Tell us what you need to package and we will come back with the right format, a clear price and a realistic timeline.</p>
       </div>
       <figure class="pagehero-shot">
-        <img src="assets/img/printing-press-rotogravure.jpeg" alt="Request a packaging quote from Mimshak Pak in Asaba" loading="eager" width="800" height="500">
+        <img src="assets/img/press-line.jpeg" alt="Carton printing line in production at the Mimshak Pak factory in Asaba" loading="eager" width="800" height="500">
       </figure>
     </div>
   </div>
@@ -36,72 +44,167 @@
 
 <section class="section">
   <div class="container">
-    <div class="split" style="align-items:start">
+    <div class="split split--60">
       <div>
-        <span class="eyebrow">How It Works</span>
-        <h2>From request to ready packaging</h2>
-        <div class="steps" style="margin-top:1.4rem">
-          <div class="step"><h3>Tell Us Your Packaging Need</h3><p>Share the type of product, size, quantity and packaging material needed.</p></div>
-          <div class="step"><h3>We Review Your Requirement</h3><p>Our team checks the best carton or nylon packaging option for your business.</p></div>
-          <div class="step"><h3>We Prepare Your Quote</h3><p>You receive a clear quote based on your packaging size, printing and quantity.</p></div>
-          <div class="step"><h3>Production Begins</h3><p>Once approved, we begin production with attention to quality and finishing.</p></div>
-          <div class="step"><h3>Your Packaging Is Ready</h3><p>Your cartons or nylon packaging are prepared for pickup or delivery arrangement.</p></div>
-        </div>
-        <div class="trust-strip" style="justify-content:flex-start;margin-top:1.6rem">
-          <span class="badge">Fully Registered Nigerian Company</span>
-          <span class="badge">Based in Asaba, Delta State</span>
-          <span class="badge">Custom Printing Available</span>
+        <div class="form-wrap">
+          <div class="form-success" role="status">
+            <strong>Your quote request is ready to send.</strong><br>
+            Your email app should now be open with the details filled in. Press send there and we will have it.
+            If nothing opened, copy the details into an email to
+            <a href="mailto:info@mimshakpak.com">info@mimshakpak.com</a>, or send them on
+            <a href="https://wa.me/2348037079976" target="_blank" rel="noopener">WhatsApp</a>.
+          </div>
+          <div class="form-error" role="alert">Please fill in the fields marked required, then try again.</div>
+
+          <form data-form data-form-kind="quote" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="q-company">Company name <span class="req">*</span></label>
+                <input id="q-company" name="company" type="text" required autocomplete="organization" placeholder="Your business name">
+              </div>
+              <div class="field">
+                <label for="q-name">Contact name <span class="req">*</span></label>
+                <input id="q-name" name="name" type="text" required autocomplete="name" placeholder="Full name">
+              </div>
+              <div class="field">
+                <label for="q-email">Email <span class="req">*</span></label>
+                <input id="q-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com">
+              </div>
+              <div class="field">
+                <label for="q-phone">Phone or WhatsApp <span class="req">*</span></label>
+                <input id="q-phone" name="phone" type="tel" required autocomplete="tel" placeholder="0803 000 0000">
+              </div>
+
+              <div class="field">
+                <label for="q-packaging">Packaging type <span class="req">*</span></label>
+                <select id="q-packaging" name="packaging" required>
+                  <option value="">Select a format</option>
+                  <option>Printed cartons</option>
+                  <option>Custom carton packaging</option>
+                  <option>Nylon print packaging</option>
+                  <option>Industrial packaging</option>
+                  <option>Branded product packaging</option>
+                  <option>Both cartons and nylon</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="q-industry">Industry</label>
+                <select id="q-industry" name="industry">
+                  <option value="">Select an industry</option>
+                  <option>Bakery</option>
+                  <option>Food &amp; Beverage</option>
+                  <option>FMCG</option>
+                  <option>Pharmaceuticals</option>
+                  <option>Cosmetics &amp; Beauty</option>
+                  <option>Agriculture &amp; Agro-Processing</option>
+                  <option>Retail &amp; Supermarkets</option>
+                  <option>Manufacturing</option>
+                  <option>Logistics &amp; Distribution</option>
+                  <option>Household Products</option>
+                  <option>Industrial Supplies</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="q-product">What are you packaging? <span class="req">*</span></label>
+                <input id="q-product" name="product" type="text" required placeholder="e.g. 250g bar soap, sliced bread, engine oil">
+              </div>
+              <div class="field">
+                <label for="q-size">Packaging dimensions</label>
+                <input id="q-size" name="size" type="text" placeholder="Length x width x height, if known">
+                <small>Leave blank if you are not sure and we will work it out with you.</small>
+              </div>
+
+              <div class="field">
+                <label for="q-quantity">Estimated quantity</label>
+                <input id="q-quantity" name="quantity" type="text" placeholder="e.g. 5,000 units">
+              </div>
+              <div class="field">
+                <label for="q-colours">Print colours</label>
+                <input id="q-colours" name="colours" type="text" placeholder="e.g. 3 colours, full colour">
+              </div>
+
+              <div class="field">
+                <label for="q-city">Delivery city <span class="req">*</span></label>
+                <input id="q-city" name="city" type="text" required placeholder="e.g. Asaba, Onitsha, Lagos">
+              </div>
+              <div class="field">
+                <label for="q-timeline">Timeline</label>
+                <select id="q-timeline" name="timeline">
+                  <option value="">Select a timeline</option>
+                  <option>As soon as possible</option>
+                  <option>Within 2 weeks</option>
+                  <option>Within a month</option>
+                  <option>Planning ahead</option>
+                </select>
+              </div>
+
+              <div class="field field--full">
+                <label for="q-message">Anything else we should know?</label>
+                <textarea id="q-message" name="message" placeholder="Artwork status, reorder plans, special finishing, anything that affects the quote."></textarea>
+              </div>
+            </div>
+
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="btn-row">
+              <button class="btn btn--primary btn--arrow" type="submit">Send Quote Request</button>
+              <a class="btn btn--outline" href="https://wa.me/2348037079976" target="_blank" rel="noopener">Send on WhatsApp</a>
+            </div>
+            <p class="form-note">
+              This site is served as static pages with no mail server attached, so submitting prepares the
+              request in your own email app rather than sending it in the background. Nothing is transmitted
+              to us until you press send there. Setup notes for wiring a form endpoint are in the README.
+            </p>
+          </form>
         </div>
       </div>
 
-      <div class="form-wrap">
-        <div class="form-success">✅ Thank you! Your quote request has been received. Our team will review it and contact you with the best packaging option for your business.</div>
-        <form data-form novalidate>
-          <div class="form-grid">
-            <div class="field"><label>Full Name <span class="req">*</span></label><input type="text" name="fullname" required></div>
-            <div class="field"><label>Company Name</label><input type="text" name="company"></div>
-            <div class="field"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" required></div>
-            <div class="field"><label>WhatsApp Number</label><input type="tel" name="whatsapp"></div>
+      <div>
+        <span class="eyebrow">What Happens Next</span>
+        <h2 style="font-size:clamp(1.3rem,2vw,1.7rem)">From request to quote</h2>
+        <div class="timeline" style="grid-template-columns:1fr;gap:0;margin-top:1.4rem">
+          <div class="tstep" style="display:grid;grid-template-columns:42px 1fr;gap:1.2rem;text-align:left;padding:0 0 1.8rem">
+            <div class="num" style="margin:0">01</div>
+            <div><h3>We read your specification</h3><p>Our team checks the format, size and volume against what we produce.</p></div>
           </div>
-          <div class="field"><label>Email Address <span class="req">*</span></label><input type="email" name="email" required></div>
-          <div class="form-grid">
-            <div class="field"><label>Product Type</label><input type="text" name="product" placeholder="e.g. soap, bread, cosmetics"></div>
-            <div class="field"><label>Packaging Needed <span class="req">*</span></label>
-              <select name="packaging" required>
-                <option value="">Select an option</option>
-                <option>Carton Printing</option>
-                <option>Custom Carton Packaging</option>
-                <option>Nylon Print Packaging</option>
-                <option>Industrial Packaging</option>
-                <option>Branded Product Packaging</option>
-              </select>
-            </div>
+          <div class="tstep" style="display:grid;grid-template-columns:42px 1fr;gap:1.2rem;text-align:left;padding:0 0 1.8rem">
+            <div class="num" style="margin:0">02</div>
+            <div><h3>We come back with questions</h3><p>If anything is unclear we call or message you rather than guessing.</p></div>
           </div>
-          <div class="form-grid">
-            <div class="field"><label>Quantity Needed</label><input type="text" name="quantity" placeholder="e.g. 5,000 units"></div>
-            <div class="field"><label>Packaging Size / Dimensions</label><input type="text" name="size" placeholder="e.g. 30 x 20 x 15 cm"></div>
+          <div class="tstep" style="display:grid;grid-template-columns:42px 1fr;gap:1.2rem;text-align:left;padding:0">
+            <div class="num" style="margin:0">03</div>
+            <div><h3>You get a clear quote</h3><p>Priced on size, printing and quantity, with the lead time stated.</p></div>
           </div>
-          <div class="form-grid">
-            <div class="field"><label>Do you have a design?</label>
-              <select name="design">
-                <option value="">Select an option</option>
-                <option>Yes</option>
-                <option>No</option>
-                <option>Need help with design</option>
-              </select>
-            </div>
-            <div class="field"><label>Delivery Location</label><input type="text" name="location" placeholder="City / State"></div>
-          </div>
-          <div class="field"><label>Message / Special Requirements</label><textarea name="message" placeholder="Tell us anything else about your packaging need"></textarea></div>
-          <div class="field"><label>Upload Design File</label><input type="file" name="designfile" accept="image/*,.pdf,.ai,.psd"><p class="form-note">Optional — attach artwork if you have it (image, PDF or design file).</p></div>
-          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Submit Quote Request</button>
-          <p class="form-note center" style="margin-top:.9rem">Prefer to talk? <a href="tel:+2348037079976">Call us</a> or <a href="https://wa.me/2348037079976" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
-        </form>
+        </div>
+
+        <ul class="info-list" style="margin-top:2rem">
+          <li>
+            <span class="ii"><svg aria-hidden="true"><use href="#i-phone"></use></svg></span>
+            <div><b>Prefer to call?</b><a href="tel:+2348037079976">0803 707 9976</a><a href="tel:+2348103064976">0810 306 4976</a></div>
+          </li>
+          <li>
+            <span class="ii"><svg aria-hidden="true"><use href="#i-clock"></use></svg></span>
+            <div><b>Business hours</b><span>Mon &ndash; Sat: 8:00am &ndash; 6:00pm</span></div>
+          </li>
+          <li>
+            <span class="ii"><svg aria-hidden="true"><use href="#i-pin"></use></svg></span>
+            <div><b>Or visit us</b><span>No 3 Austin Ugbo Onyeje Avenue, Orjimiyana, Asaba, Delta State</span></div>
+          </li>
+        </ul>
+
+        <div class="trust-strip">
+          <span><svg aria-hidden="true"><use href="#i-shield"></use></svg>Registered in Nigeria</span>
+          <span><svg aria-hidden="true"><use href="#i-factory"></use></svg>Produced in Asaba</span>
+          <span><svg aria-hidden="true"><use href="#i-layers"></use></svg>Cartons &amp; nylon</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<script src="assets/js/main.js?v=12"></script>
+<script src="assets/js/main.js?v=16"></script>
 </body>
 </html>

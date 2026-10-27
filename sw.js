@@ -7,7 +7,7 @@
 /* Bump VERSION on every deploy that changes CSS, JS or page markup.
    activate() deletes every cache whose key no longer matches, which is
    what forces returning visitors off the previous design. */
-var VERSION = 'mpk-v4';
+var VERSION = 'mpk-v8';
 var SHELL = VERSION + '-shell';
 var RUNTIME = VERSION + '-runtime';
 
