@@ -23,7 +23,7 @@
   /* ---- text ---- */
   --ink:#1F1611;
   --slate:#5E5147;
-  --slate-light:#90837A;
+  --slate-light:#746558;   /* 4.5:1+ on white, porcelain and mist */
   --on-dark:#F7F1EB;
   --on-dark-dim:#CBB9A8;
 
@@ -32,11 +32,16 @@
   --line-soft:#F0E9E1;
   --line-dark:rgba(255,255,255,.13);
 
-  /* ---- accent: logo orange ---- */
+  /* ---- accent: logo orange ----
+     White on #EE7219 is only 2.98:1, so anything sitting ON the orange
+     uses --on-brass (5.97:1) rather than white. --brass-dk is for orange
+     text on light ground, where it needs to be the darker tone. */
   --brass:#EE7219;
-  --brass-dk:#C85A0D;
+  --brass-hov:#D8650F;
+  --brass-dk:#B04E09;   /* 4.5:1+ on white, porcelain, cream and brass-soft */
   --brass-lt:#F79A52;
   --brass-soft:#FDEADB;
+  --on-brass:#1F1611;
   --brown:#8B5E30;
 
   /* ---- system ---- */
@@ -63,8 +68,8 @@
   /* legacy aliases kept so older inline styles don't break */
   --bg:#FFFFFF;--bg-2:#FBF7F3;--bg-soft:#FBF7F3;--bg-soft-2:#F7EDE3;
   --dark:#2B1D12;--brand-dark:#2B1D12;--ink-2:#5E5147;--ink-dim:#5E5147;
-  --muted:#90837A;--accent:#EE7219;--accent-dk:#C85A0D;--orange:#EE7219;
-  --orange-dark:#C85A0D;--gold:#EE7219;--line-2:#E7DED4;--head:var(--display);
+  --muted:#746558;--accent:#EE7219;--accent-dk:#B04E09;--orange:#EE7219;
+  --orange-dark:#B04E09;--gold:#EE7219;--line-2:#E7DED4;--head:var(--display);
 }
 
 /* ================= base ================= */
@@ -131,8 +136,8 @@ strong{color:var(--ink);font-weight:600}
   line-height:1;white-space:nowrap;
 }
 .btn:active{transform:translateY(1px)}
-.btn--primary{background:var(--brass);color:#fff;border-color:var(--brass)}
-.btn--primary:hover{background:var(--brass-dk);border-color:var(--brass-dk);color:#fff}
+.btn--primary{background:var(--brass);color:var(--on-brass);border-color:var(--brass)}
+.btn--primary:hover{background:var(--brass-hov);border-color:var(--brass-hov);color:var(--on-brass)}
 .btn--navy{background:var(--navy);color:#fff;border-color:var(--navy)}
 .btn--navy:hover{background:var(--navy-700);border-color:var(--navy-700);color:#fff}
 .btn--arrow::after{content:"→";transition:transform var(--t);display:inline-block}
@@ -279,11 +284,11 @@ strong{color:var(--ink);font-weight:600}
 .hero-shot img{width:100%;aspect-ratio:16/11;object-fit:cover;object-position:center 58%;display:block}
 .hero-shot figcaption{
   position:absolute;left:0;right:0;bottom:0;padding:.85rem 1.1rem;
-  background:var(--brass);color:#fff;font-family:var(--display);
+  background:var(--brass);color:var(--on-brass);font-family:var(--display);
   font-size:.78rem;font-weight:600;letter-spacing:-.005em;
   display:flex;align-items:center;gap:.6rem;
 }
-.hero-shot figcaption svg{width:16px;height:16px;flex:none;stroke:#fff;fill:none;stroke-width:1.7}
+.hero-shot figcaption svg{width:16px;height:16px;flex:none;stroke:var(--on-brass);fill:none;stroke-width:1.7}
 .hero h1{color:#fff;margin-bottom:1.3rem;max-width:13ch}
 .hero h1 em{font-style:normal;color:var(--brass-lt);display:block}
 .hero .lead{color:#C9D4DE;max-width:48ch;font-size:clamp(1rem,1.2vw,1.13rem)}
@@ -332,7 +337,7 @@ strong{color:var(--ink);font-weight:600}
 }
 .sol-rail b{
   font-family:var(--display);font-size:.63rem;font-weight:700;letter-spacing:.2em;
-  text-transform:uppercase;color:#fff;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;
+  text-transform:uppercase;color:var(--on-brass);writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;
 }
 .sol-rail .ico{position:absolute;top:0;left:0;right:0;height:44px;display:grid;place-items:center;background:var(--brass-dk)}
 .sol-rail .ico svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.5}
@@ -503,7 +508,7 @@ strong{color:var(--ink);font-weight:600}
 .pstep:hover .pstep-media img{transform:scale(1.05)}
 .pstep .num{
   position:absolute;top:8px;left:8px;z-index:2;width:30px;height:30px;border-radius:50%;
-  background:var(--brass);color:#fff;display:grid;place-items:center;
+  background:var(--brass);color:var(--on-brass);display:grid;place-items:center;
   font-family:var(--display);font-weight:700;font-size:.75rem;letter-spacing:-.01em;
 }
 .pstep h3{font-size:.85rem;color:#fff;margin-bottom:.3rem;line-height:1.2}
@@ -522,7 +527,7 @@ strong{color:var(--ink);font-weight:600}
 .tstep .num{
   width:42px;height:42px;border-radius:50%;background:var(--brass);border:1px solid var(--brass);
   display:grid;place-items:center;margin:0 auto 1.3rem;font-family:var(--display);
-  font-weight:700;font-size:.92rem;color:#fff;letter-spacing:-.02em;
+  font-weight:700;font-size:.92rem;color:var(--on-brass);letter-spacing:-.02em;
 }
 .tstep h3{font-size:.97rem;margin-bottom:.4rem}
 .tstep p{font-size:.85rem;color:var(--slate);margin:0}
@@ -630,7 +635,11 @@ strong{color:var(--ink);font-weight:600}
 .pagehero h1{color:#fff;margin-bottom:.9rem;font-size:clamp(2.1rem,4.2vw,3.6rem);max-width:19ch}
 .pagehero p{color:var(--on-dark-dim);max-width:60ch;font-size:clamp(1rem,1.2vw,1.12rem);margin:0}
 .pagehero-shot{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--navy-300)}
-.pagehero-shot img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.pagehero-shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 56%;display:block}
+/* buttons sitting on the dark page-hero band */
+.pagehero .btn--ghost,.pagehero .btn--outline{color:#fff;border-color:rgba(255,255,255,.42)}
+.pagehero .btn--ghost:hover{background:#fff;color:var(--navy);border-color:#fff}
+.pagehero .btn--outline:hover{background:rgba(255,255,255,.1);color:#fff;border-color:#fff}
 /* legacy: any .hero-bg still in markup renders as a normal surface panel */
 .pagehero .hero-bg{
   position:static;width:100%;height:auto;opacity:1;margin-top:1.8rem;
@@ -661,6 +670,10 @@ strong{color:var(--ink);font-weight:600}
 .cta-band h2{color:#fff;margin-bottom:.8rem;max-width:22ch;margin-inline:auto}
 .cta-band p{color:var(--on-dark-dim);max-width:56ch;margin:0 auto;font-size:1.02rem}
 .cta-band .btn-row{justify-content:center;margin-top:2rem}
+/* the band paints its own dark ground, so outline/ghost must invert here too */
+.cta-band .btn--ghost,.cta-band .btn--outline{color:#fff;border-color:rgba(255,255,255,.42)}
+.cta-band .btn--ghost:hover{background:#fff;color:var(--navy);border-color:#fff}
+.cta-band .btn--outline:hover{background:rgba(255,255,255,.1);color:#fff;border-color:#fff}
 
 /* ================= forms ================= */
 .form-wrap{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(1.7rem,3vw,2.8rem)}
@@ -864,7 +877,7 @@ strong{color:var(--ink);font-weight:600}
 .foot-contact li span{font-size:.87rem;color:var(--on-dark-dim);line-height:1.6;display:block}
 .footer-bottom{border-top:1px solid var(--line-dark);padding-block:1.5rem}
 .footer-bottom .container{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.footer-bottom span{font-size:.79rem;color:var(--slate-light)}
+.footer-bottom span{font-size:.79rem;color:var(--on-dark-dim)}
 
 /* ================= floating actions ================= */
 .floaters{position:fixed;right:22px;bottom:26px;z-index:800;display:flex;flex-direction:column;gap:.7rem}
